@@ -1,0 +1,32 @@
+{
+  "name": "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿",
+  "version": "2.0.0",
+  "description": "Simple WhatsApp bot, Modified by VENi - youssefv",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿"
+  ],
+  "author": "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "chokidar": "^5.0.0",
+    "file-type": "^18.0.0",
+    "form-data": "^4.0.5",
+    "meowsab": "https://github.com/deveni0/ws/tarball/main",
+    "qs": "*",
+    "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main",
+    "wa-sticker-formatter": "^4.3.2"
+  },
+  "overrides": {
+    "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main",
+    "*": {
+      "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main"
+    }
+  }
+}
