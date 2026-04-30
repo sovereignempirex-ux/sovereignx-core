@@ -16,7 +16,7 @@ const handler = async (m, { conn }) => {
             pp = await conn.profilePictureUrl(who, 'image');
         } catch (err) {
             console.log('Profile pic error:', err.message);
-            pp = 'https://i.postimg.cc/nzJSS8wB/IMG_20260409_WA0328.jpg';
+            pp = 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg';
         }
 
         // 👤 جلب الاسم
