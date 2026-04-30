@@ -36,7 +36,7 @@ termux-setup-storage
 pkg update -y && pkg upgrade -y
 pkg install git nodejs -y
 git clone https://github.com/sovereignempirex-ux/sovereignx-core
-cd Pomni-AI
+cd ~/SALEVER/BOT
 npm install
 npm start
 ```

@@ -7,34 +7,73 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
-        newsletterName: '𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
+        newsletterJid: '120363409792989178@newsletter',
+        newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
         serverMessageId: 0
     },
     externalAdReply: {
-        title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
+        title: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 👑 | بوت واتساب متطور",
         body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://github.com/sovereignempirex-ux/sovereignx-core',
         mediaType: 1,
         renderLargerThumbnail: true
     }
 });
 const { images } = bot.config.info;
 const img = images.random()
-await conn.sendMessage(m.chat, { 
+await conn.sendMessage(m.chat, {
   text: `
-GitHub: _*https://github.com/deveni0/Pomni-AI/tree/main*_
-
-Video: _*https://youtu.be/hA5aCpvesJE?si=pHAEsbDFTVXe2_sq*_
-
-> *لا تنسي وضع نجمة لـ الريبو 🌟*
+*╭───[ 𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 👑 ]───╮*
+*│*
+*│ 👤 المطور:* 𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿
+*│ 📧 الإيميل:* sovereign.empirex@gmail.com
+*│*
+*│ 🤖 رقم البوت:* +201283073813
+*│ 📱 رقم المطور:* +9743198191
+*│*
+*│ 🌐 الموقع الرسمي:*
+*│* https://animeplay306-dev.github.io/noho-website
+*│*
+*│ 📢 قناة البوت:*
+*│* https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23
+*│*
+*│ ⚙️ جروب التنصيب:*
+*│* https://chat.whatsapp.com/EFoA83bbdfd0bwhmqEDobv
+*│*
+*│ 🆘 جروب الدعم:*
+*│* https://chat.whatsapp.com/Eav8hCuSrBwJA2czM8zLLy
+*│*
+*│ 🐙 GitHub:*
+*│* https://github.com/sovereignempirex-ux/sovereignx-core
+*│*
+*│ 📷 إنستجرام:*
+*│* https://www.instagram.com/sovereign72026
+*│*
+*│ 🎵 تيك توك:*
+*│* https://www.tiktok.com/@sovereignx8
+*│*
+*│ ▶️ يوتيوب:*
+*│* https://youtube.com/@sovereignx-72
+*│*
+*│ 🧵 ثريدز:*
+*│* https://www.threads.com/@sovereign72026
+*│*
+*│ 🐦 X (تويتر):*
+*│* https://x.com/Skmkal
+*│*
+*│ 📘 فيسبوك:*
+*│* https://www.facebook.com/share/g/1BYbxtS3EB/
+*│*
+*│ ⭐ لا تنسَ وضع نجمة للريبو 🌟*
+*│*
+*╰──────────────╯*
 `,
   contextInfo: context(m.sender, img)
-}, { quoted: reply_status });
+}, { quoted: m });
 }
 handler.usage = ["سكريبت"];
 handler.category = "group";
-handler.command = ["سكريبت", "سورس", "sc"];
+handler.command = ["سكريبت", "سورس", "sc", "script", "source"];
 
 export default handler;
