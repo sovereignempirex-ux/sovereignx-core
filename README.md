@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg" alt="IMAGE" width="500"/>
   
-  [![GitHub](https://img.shields.io/badge/GitHub-VENi-blue?style=for-the-badge&logo=github)](https://github.com/sovereignempirex-ux/sovereignx-core)
+  [![GitHub](https://img.shields.io/badge/GitHub-𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵𝑿-blue?style=for-the-badge&logo=github)](https://github.com/sovereignempirex-ux/sovereignx-core)
   [![WhatsApp](https://img.shields.io/badge/WhatsApp-Owner-green?style=for-the-badge&logo=whatsapp)](https://wa.me/97431298191)
   [![WhatsApp](https://img.shields.io/badge/WhatsApp-Channel-orange?style=for-the-badge&logo=whatsapp)](https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23)
  
