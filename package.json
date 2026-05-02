@@ -18,6 +18,7 @@
     "chokidar": "^5.0.0",
     "file-type": "^18.0.0",
     "form-data": "^4.0.5",
+    "jimp": "^1.6.1",
     "meowsab": "https://github.com/deveni0/ws/tarball/main",
     "qs": "*",
     "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main",

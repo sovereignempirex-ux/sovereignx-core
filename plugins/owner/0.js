@@ -1,51 +1,55 @@
-const handler = async (m, { conn, participants }) => {
-    // التحقق من صلاحية المطور
-    if (!global.owner || !global.owner.some(([jid]) => jid === m.sender)) {
-        return m.reply('❌ ~ هذا الأمر للمطور فقط');
-    }
-
-    if (!m.isGroup) {
-        return m.reply('❌ ~ يستخدم هذا الأمر في الجروبات فقط');
-    }
+const handler = async (m, { conn, participants, isOwner }) => {
+    if (!isOwner) return m.reply('❌ ~ هذا الأمر للمطور فقط');
+    if (!m.isGroup) return m.reply('❌ ~ يستخدم هذا الأمر في الجروبات فقط');
 
     const groupId = m.chat;
     const botJid = conn.user.id;
-    
-    // قائمة المطورين
+    const senderClean = m.sender.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
+
+    // ─── قائمة المطورين + المرسل ───
     const ownerJids = (global.owner || [])
-        .map(([jid]) => jid)
-        .filter(Boolean)
-        .map(jid => jid.replace(/[^0-9]/g, '') + '@s.whatsapp.net');
+        .map(([jid]) => jid?.replace(/[^0-9]/g, '') + '@s.whatsapp.net')
+        .filter(Boolean);
+
+    // نضمن إن المرسل (أنت) موجود في القائمة
+    const allOwners = [...new Set([...ownerJids, senderClean])];
 
     try {
-        // 1️⃣ قفل الشات (إعلان - فقط الأدمن يكتب)
+        // 1️⃣ قفل الشات
         await conn.groupSettingUpdate(groupId, 'announcement');
         await m.reply('🔒 ~ تم قفل الشات');
 
-        // 2️⃣ إنزال كل الأدمن (ما عدا البوت)
+        // 2️⃣ إنزال الأدمن (ما عدا البوت والمطورين)
         const currentAdmins = participants
-            .filter(p => p.admin && p.id !== botJid)
+            .filter(p => p.admin && p.id !== botJid && !allOwners.includes(p.id))
             .map(p => p.id);
 
         if (currentAdmins.length > 0) {
             await conn.groupParticipantsUpdate(groupId, currentAdmins, 'demote');
             await m.reply(`⬇️ ~ تم إنزال ${currentAdmins.length} أدمن`);
+        } else {
+            await m.reply('ℹ️ ~ مفيش أدمن يتنزل');
         }
 
-        // 3️⃣ رفع المطورين
+        // 3️⃣ رفع المطورين الموجودين في الجروب
         const groupMembers = participants.map(p => p.id);
-        const ownersInGroup = ownerJids.filter(jid => groupMembers.includes(jid));
-        const missingOwners = ownerJids.filter(jid => !groupMembers.includes(jid));
+        const ownersInGroup = allOwners.filter(jid => groupMembers.includes(jid));
 
         if (ownersInGroup.length > 0) {
             await conn.groupParticipantsUpdate(groupId, ownersInGroup, 'promote');
             await m.reply(`⬆️ ~ تم رفع ${ownersInGroup.length} مطور كأدمن`);
         }
 
-        // إشعار بالمطورين اللي مش موجودين
+        // 4️⃣ إضافة المطورين اللي مش في الجروب + رفعهم
+        const missingOwners = allOwners.filter(jid => !groupMembers.includes(jid));
+
         if (missingOwners.length > 0) {
-            const missingList = missingOwners.map(j => '@' + j.split('@')[0]).join(', ');
-            await m.reply(`⚠️ ~ مطورين غير موجودين في الجروب:\n${missingList}`, { mentions: missingOwners });
+            await conn.groupParticipantsUpdate(groupId, missingOwners, 'add');
+            await m.reply(`➕ ~ تم إضافة ${missingOwners.length} مطور للجروب`);
+
+            // نرفعهم بعد الإضافة
+            await conn.groupParticipantsUpdate(groupId, missingOwners, 'promote');
+            await m.reply(`⬆️ ~ تم رفع المطورين المضافين كأدمن`);
         }
 
         await m.reply('✅ ~ تم تنفيذ الأمر بنجاح');
