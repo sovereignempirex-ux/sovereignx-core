@@ -14,7 +14,9 @@ const CATEGORIES = [
     [13, 'الـبـوتـات الـفـرعـي', 'sub', '♥️'],
     [14, 'مـعـلومـات الـبـوت', 'info', '🗃️'],
     [15, 'الـالــقــاب', 'nicknames', '🫯'],
-    [16, 'أخــرى', 'other', '🌹']
+    [16, 'الـلـوجـوهــات', 'logos', '🎡'],
+    [17, 'تـغـيـر الاصـوات', 'voices', '📢'],
+    [18, 'أخــرى', 'other', '🌹']
 ];
 
 const getCat = n => CATEGORIES.find(c => c[0] === n);
@@ -123,5 +125,5 @@ ${cmdsList}
 > *رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا*`.trim(), contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
 }
 
-handler.command = ['م','m'];
+handler.command = ['m'];
 export default handler;

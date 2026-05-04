@@ -7,8 +7,8 @@ const example = async (m, { conn }) => {
 conn.msgUrl(m.chat,
   '*🔥 Special Offer*',
   {
-    img: 'https://i.postimg.cc/PrjDHbm8/ULM.jpg',
-    title: '50% OFF',
+    img: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
+    title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
     body: 'Limited time',
     big: true,
     mentions: ['201283073813@s.whatsapp.net', '97431298191@s.whatsapp.net'],

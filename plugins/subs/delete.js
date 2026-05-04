@@ -31,5 +31,5 @@ const run = async (m, { args, conn, bot }) => {
 run.command = ["حذف_بوت"];
 run.usage =  ["حذف_بوت"];
 run.category = "sub";
-run.noSub = false;
+run.noSub = true;
 export default run;

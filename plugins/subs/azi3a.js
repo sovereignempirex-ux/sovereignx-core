@@ -58,6 +58,6 @@ const run = async (m, { conn, bot }) => {
 run.command = ["اذاعة_فرعي", "اذاعه_فرعي"];
 run.usage =  ["اذاعة_فرعي"];
 run.category = "sub";
-run.noSub = false;
+run.noSub = true;
 run.owner = true;
 export default run;

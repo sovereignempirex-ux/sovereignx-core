@@ -4,7 +4,7 @@ const handler = async (m, { conn, text, bot }) => {
   if (!text) return m.reply("💙 ~ حط نص جنب الأمر ~ ❤️");
 
   const loadingMsg = await conn.sendMessage(m.chat, {
-    contextInfo: context(m.sender, "https://i.postimg.cc/QCfNHdkQ/bot.png"),
+    contextInfo: context(m.sender, "https://i.pinimg.com/736x/fd/65/22/fd6522b2251200bbf41b449f5991cfd7.jpg"),
     text: "```⏳ جـاري تـحـضـيـر الـرد يـا قـمـر,...```"
   }, { quoted: m});
 
@@ -20,7 +20,7 @@ ${text}
   await conn.sendMessage(m.chat, {
     text: res.answer,
     edit: loadingMsg.key,
-    contextInfo: context(m.sender, "https://i.postimg.cc/QCfNHdkQ/bot.png")
+    contextInfo: context(m.sender, "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg")
   }, { quoted: m });
 };
 

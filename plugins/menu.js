@@ -16,7 +16,9 @@ const CATEGORIES = [
     [13, 'الـبـوتـات الـفـرعـي', 'sub', '♥️'],
     [14, 'مـعـلومـات الـبـوت', 'info', '🗃️'],
     [15, 'الـالــقــاب', 'nicknames', '🫯'],
-    [16, 'أخــرى', 'other', '🌹']
+    [16, 'الـلـوجـوهــات', 'logos', '🎡'],
+    [17, 'تـغـيـر الاصـوات', 'voices', '📢'],
+    [18, 'أخــرى', 'other', '🌹']
 ];
 
 const getCat = n => CATEGORIES.find(c => c[0] === n);
@@ -115,7 +117,7 @@ menu.before = async (m, { conn, bot }) => {
 ${cmdsList}
 
 ╭─┈─┈─┈─⟞${cat[3]}⟝─┈─┈─┈─╮
-┃ *⌯︙𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿*
+┃ *⌯︙𝐕𝐈𝐈7 ~ ${bot.config.info.nameBot}*
 ╰─┈─┈─┈─⟞${cat[3]}⟝─┈─┈─┈─╯
 > *رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا*`.trim(),
         contextInfo: context(m.sender, getImg(bot))

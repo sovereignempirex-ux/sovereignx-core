@@ -44,7 +44,7 @@ const run = async (m, { conn, bot }) => {
 };
 
 run.command = ["البوتات", "bots"];
-run.noSub = false;
+run.noSub = true;
 run.usage =  ["تنصيب"];
 run.category = "البوتات";
 export default run;

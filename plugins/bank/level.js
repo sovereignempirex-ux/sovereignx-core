@@ -81,7 +81,7 @@ export default async function before(m, { conn }) {
                 externalAdReply: {
                     title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | السيرك الرقمي",
                     body: "تـرقـيـة فـي الـسـيـرك",
-                    thumbnailUrl:  "https://i.postimg.cc/QCfNHdkQ/bot.png",
+                    thumbnailUrl: "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
                     sourceUrl: '',
                     mediaType: 1,
                     renderLargerThumbnail: true

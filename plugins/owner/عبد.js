@@ -169,7 +169,7 @@ let handler = async (m, { conn, args, participants, isOwner }) => {
     }, totalSeconds * 1000 + 10000);
 
     data.timeout = timeout;
-    m.react('🫦');
+    m.react('🔒');
 };
 
 handler.command = ['عبد'];

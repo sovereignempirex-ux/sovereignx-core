@@ -23,7 +23,7 @@ await conn.sendCarousel(m.chat, {
       ]
     },
 {
-      mediaUrl: 'https://qu.ax/x/6GwxA.mp4',
+      mediaUrl: 'https://files.catbox.moe/svqaa1.mp4',
       mediaType: 'video',
       bodyText: 'Intro Video',
       buttons: [

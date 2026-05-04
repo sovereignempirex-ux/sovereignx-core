@@ -23,7 +23,7 @@ const handler = async (m, { conn, command, text }) => {
         user.name = name;
         user.age = parseInt(age);
         
-        const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() =>  'https://i.postimg.cc/QCfNHdkQ/bot.png');
+        const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg');
         
         const msg = `╭─┈─┈─┈─⟞📝⟝─┈─┈─┈─╮
 ┃ *✅ تـم الـتـسـجـيـل بـنـجـاح*
@@ -50,7 +50,7 @@ const handler = async (m, { conn, command, text }) => {
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | الـسـيـرك الـرقـمـي",
+                    title: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 🍻 | الـسـيـرك الـرقـمـي",
                     body: "تـسـجـيـل جـديـد فـي الـسـيـرك",
                     thumbnailUrl: profilePic,
                     sourceUrl: '',
@@ -69,7 +69,7 @@ const handler = async (m, { conn, command, text }) => {
         delete user.name;
         delete user.age;
         
-        const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://i.postimg.cc/QCfNHdkQ/bot.png');
+        const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg');
         
         const msg = `╭─┈─┈─┈─⟞🗑️⟝─┈─┈─┈─╮
 ┃ *✅ تـم حـذف الـتـسـجـيـل*
@@ -95,7 +95,7 @@ const handler = async (m, { conn, command, text }) => {
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | الـسـيـرك الـرقـمـي",
+                    title: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 🍻 | الـسـيـرك الـرقـمـي",
                     body: "تـم حـذف الـتـسـجـيـل",
                     thumbnailUrl: profilePic,
                     sourceUrl: '',

@@ -10,7 +10,7 @@ const h =  async (m, { text, bot, conn }) => {
             renderLargerThumbnail: false
         };
         
-        const customText = text || "ﷺ صلي علي الحبيب";
+        const customText = text || "صلي علي الحبيبﷺ";
         
         if (!m.quoted) {
             return await conn.sendMessage(m.chat, { 

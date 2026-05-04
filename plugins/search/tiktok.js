@@ -1,39 +1,39 @@
 async function test(m, { conn, bot, text }) {
- if (!text) return m.reply("#🫯: اكتب نص جنب الأمر")
- try {
- const res = await fetch(`https://www.emam-api.web.id/home/sections/Search/api/tiktok/videos?q=${text}`)
+  if (!text) return m.reply("#🫯: اكتب نص جنب الأمر")
+  try {
+  const res = await fetch(`https://www.emam-api.web.id/home/sections/Search/api/tiktok/videos?q=${text}`)
 const { data } = await res.json()
 
 if (data && data.length > 0) {
- const { title, no_watermark: video, music } = data[0]
+    const { title, no_watermark: video, music } = data[0]
 
- await conn.sendButtonNormal(m.chat, {
- media: { url: video },
- mediaType: 'video',
- caption: `${title || "no title"}`,
- buttons: [
- {
- name: "cta_copy",
- params: {
- display_text: "💟╎ My Channel",
- copy_code: "https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23"
- }
- },
- ],
- mentions: [m.sender],
- newsletter: {
- name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
- jid: '120363409792989178@newsletter'
- },
- }, global.reply_status)
+    await conn.sendButtonNormal(m.chat, {
+        media: { url: video },
+        mediaType: 'video',
+        caption: `${title || "no title"}`,
+        buttons: [
+            { 
+                name: "cta_copy", 
+                params: { 
+                    display_text: "💟╎ My Channel", 
+                    copy_code: "https://whatsapp.com/channel/0029Vb3UUKz3QxS3bgWmTc3x" 
+                } 
+            },
+        ],
+        mentions: [m.sender],
+        newsletter: {
+            name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+            jid: '120363409792989178@newsletter'
+        },
+    }, global.reply_status)
 } else {
- await conn.sendMessage(m.chat, { text: `لا يوجد "${text}"` })
+    await conn.sendMessage(m.chat, { text: `لا يوجد "${text}"` })
 }
-
- } catch (error) {
- console.error(error.messsage);
- m.react("❌")
- }
+    
+  } catch (error) {
+    console.error(error.messsage);
+    m.react("❌")
+  }
 }
 
 test.category = "search";

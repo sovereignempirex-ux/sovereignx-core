@@ -12,7 +12,7 @@ FN:${watermark}
 TEL;type=CELL;waid=${num}:+${num}
 END:VCARD`;
 
-  let img = 'https://i.postimg.cc/PrjDHbm8/ULM.jpg';
+  let img = 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg';
   
   await conn.sendMessage(m.chat, {
     contacts: { displayName: watermark, contacts: [{ vcard }] },

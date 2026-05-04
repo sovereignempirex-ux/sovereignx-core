@@ -21,7 +21,7 @@ ${text}
   await conn.sendMessage(m.chat, {
     text: res.answer,
     edit: loadingMsg.key,
-    contextInfo: context(m.sender, "https://qu.ax/x/heoyu.jpg")
+    contextInfo: context(m.sender, "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg")
   });
 };
 
@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
         newsletterName: '𝐌𝐈𝐊𝐀𝐒𝐀 ~ 𝐒𝐜𝐚𝐫𝐟 🧣',
         serverMessageId: 0
     },

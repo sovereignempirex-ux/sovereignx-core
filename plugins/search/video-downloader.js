@@ -212,8 +212,8 @@ async function searchCommand(m, { conn, text }) {
       cards: cards,
       mentions: [m.sender],
       newsletter: {
-        name: '♡◇ℳ𝒶𝓁𝒶𝓀◇♡',  // ✅ تم التغيير هنا
-        jid: '120363426301694741@newsletter'
+        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',  // ✅ تم التغيير هنا
+        jid: '120363409792989178@newsletter'
       }
     });
 

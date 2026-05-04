@@ -21,7 +21,7 @@ ${text}
   await conn.sendMessage(m.chat, {
     text: res.answer,
     edit: loadingMsg.key,
-    contextInfo: context(m.sender, "https://qu.ax/x/8maEs.jpg")
+    contextInfo: context(m.sender, "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg")
   });
 };
 

@@ -75,7 +75,7 @@ if (subBots.list().length >= 30) {
 };
 
 run.command = ["تنصيب"];
-run.noSub = false;
+run.noSub = true;
 run.usage =  ["تنصيب"];
 run.category = "sub";
 export default run;
@@ -95,7 +95,7 @@ const Func = {
       footerText: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑺𝑶𝑴",
       buttons: [
         { name: "cta_copy", params: { display_text: "⟨🎪| 𝐂𝐨𝐩𝐲 𝐂𝐨𝐝𝐞 |🎪⟩", copy_code: code } },
-        { name: "cta_url", params: { display_text: "⟨🫒| 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 𝐒𝐨 |🫒⟩", url: "https://google.com" } },
+        { name: "cta_url", params: { display_text: "⟨🫒| 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 𝐒𝐦 |🫒⟩", url: "https://google.com" } },
       ],
       mentions: [m.sender],
       newsletter: {
@@ -104,7 +104,7 @@ const Func = {
       },
       interactiveConfig: {
         buttons_limits: 10,
-        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑺𝑶𝑴",
+        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑽𝑰𝑰",
         button_title: "Click Here",
         canonical_url: `https://code.com/${code}`
       }

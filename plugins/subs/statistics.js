@@ -25,7 +25,7 @@ const run = async (m, { conn, bot }) => {
 };
 
 run.command = ["احصائيات_البوتات"];
-run.noSub = false;
+run.noSub = true;
 run.usage =  ["احصائيات_البوتات"];
 run.category = "sub";
 export default run;

@@ -27,8 +27,8 @@ const group = async (ctx, event, eventType) => {
         if (global.db.groups[event.chat].noWelcome === true) return 9999;
 
         const img = ["remove", "add"].includes(eventType) 
-            ? (event.userUrl || "https://files.catbox.moe/hm9iq4.jpg") 
-            : "https://files.catbox.moe/hm9iq4.jpg";
+            ? (event.userUrl || "https://files.catbox.moe/1be405.jpg") 
+            : "https://files.catbox.moe/1be405.jpg";
 
         await ctx.sock.msgUrl(event.chat, txt, {
             img,
@@ -73,14 +73,14 @@ const access = async (msg, checkType, time) => {
         admin: `*♡📯 الأمر ده لـ الادمن فقط 📯♡*\n⊱⋅ ──────────── ⋅⊰\n> *_انت مجرد عضو لازم تبقي ادمن يا عضو يا عبد_*`,
         private: `*♡🏷️ الأمر ده في الخاص فقط 🏷️♡*\n⊱⋅ ──────────── ⋅⊰\n> *_الامر ف الخاص بس ياحبيبي_*`,
         botAdmin: `*♡📌 لازم اكون ادمن عشان انقذ الأمر 📌♡*\n⊱⋅ ──────────── ⋅⊰\n> *_حطني ادمن عشان تقدر تستعمل الأمر ده_*`,
-        noSub: `*♡🫒 الأمر ده ف البوت الأساسي فقط 🫒♡*\n⊱⋅ ──────────── ⋅⊰\n> *_ادخل الجروب ده و جرب الأمر [ https://chat.whatsapp.com/EFoA83bbdfd0bwhmqEDobv  ] ياريت من غير سبام_*`,
+        noSub: `*♡🫒 الأمر ده ف البوت الأساسي فقط 🫒♡*\n⊱⋅ ──────────── ⋅⊰\n> *_ادخل الجروب ده و جرب الأمر [ https://chat.whatsapp.com/EFoA83bbdfd0bwhmqEDobv ] ياريت من غير سبام_*`,
         disabled: `*♡🗃️ الامر متوقف (تحت صيانة) 🗃️♡*\n⊱⋅ ──────────── ⋅⊰\n> *_الامر تحت صيانه قريباً بيشتغل تاني_*`,
         error: `*♡❌ الأمر فيه خطأ، كلم المطورين ❌♡*\n⊱⋅ ──────────── ⋅⊰\n*_اكتب " .المطور " عشان يبعتلك رقم المطور_*`
     };
     
     if (conn && messages[checkType]) {
         await conn.msgUrl(msg.chat, messages[checkType], {
-            img: "https://i.postimg.cc/QCfNHdkQ/bot.png",
+            img: "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
             title: "𝐀𝐥𝐞𝐫𝐭𝐬 | 𝐖𝐚𝐫𝐧𝐢𝐧𝐠𝐬",
             body: "𝐵𝑜𝑡 𝑎𝑙𝑒𝑟𝑡𝑠: 𝑅𝑒𝑎𝑑 𝑡𝒉𝑒 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑡𝑜 𝑙𝑒𝑎𝑟𝑛 𝑚𝑜𝑟𝑒",
             newsletter: {

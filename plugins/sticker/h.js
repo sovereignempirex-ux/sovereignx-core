@@ -9,7 +9,7 @@ const test = async (m, { conn, args }) => {
     return m.reply("📝 *الاستخدام الصحيح:*\n\n.حقوق اسم الباك | اسم المؤلف\n\n*مثال:*\n`.حقوق venom | 2010`");
   }
   
-  if (!pack) pack = "VA";
+  if (!pack) pack = "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿";
   if (author === undefined) author = null;
   
   const q = await m.quoted;
@@ -18,7 +18,7 @@ const test = async (m, { conn, args }) => {
 
   await conn.sendMessage(
     m.chat,
-    { sticker: buffer, contextInfo: context(m.sender, "https://i.pinimg.com/736x/d5/c6/c1/d5c6c1f4a0562c5c7630ae59d19c33c8.jpg") },
+    { sticker: buffer, contextInfo: context(m.sender, "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg") },
     { quoted: global.reply_status }
   );
 };

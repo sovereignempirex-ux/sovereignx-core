@@ -1,11 +1,11 @@
 const example = async (m, { conn }) => {
 
-await conn.sendButton(m.chat, {
-  imageUrl: "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
-  bodyText: "Hello! This is the message text",
-  footerText: "Footer text",
+return await conn.sendButtonNormal(m.chat, {
+  media: { url: 'https://files.catbox.moe/buq2ui.mp4' },
+  mediaType: 'video', // or image
+  caption: `hi, @${m.sender.split("@")[0]}`,
   buttons: [
-    // 1. Quick Reply
+// 1. Quick Reply
     { name: "quick_reply", params: { display_text: "👍 Quick Reply", id: "quick1" } },
     { name: "quick_reply", params: { display_text: "👎 Another Reply", id: "quick2" } },
     
@@ -36,23 +36,16 @@ await conn.sendButton(m.chat, {
       phone_number: "201283073813",
       duration: 60
     }}
-  ],
+  ], 
   mentions: [m.sender],
   newsletter: {
       name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
       jid: '120363409792989178@newsletter'
     },
-  interactiveConfig: {
-    buttons_limits: 10,
-    list_title: "Available Options",
-    button_title: "Click Here",
-    canonical_url: "https://example.com"
-  }
-}, m);
-
+}, m)
 
 };
-example.usage = ["تست2"]
+example.usage = ["تست5"]
 example.category = "example";
-example.command = ["تست2"]
+example.command = ["تست5"]
 export default example;

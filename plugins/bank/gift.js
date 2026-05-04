@@ -48,7 +48,7 @@ const handler = async (m, { conn, command }) => {
     user.xp = (user.xp || 0) + reward.xp;
     user.cookies = (user.cookies || 0) + reward.cookies;
     
-    const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://i.postimg.cc/QCfNHdkQ/bot.png');
+    const profilePic = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg');
     
     const msg = `╭─┈─┈─┈─⟞${reward.border}⟝─┈─┈─┈─╮
 ┃ *🎁 هـديـة ${reward.name} 🎁*

@@ -4,7 +4,7 @@ async function sub(client) {
 
   global.subBots = new SubBots(client.commandSystem)
   
-  SubBots.pariCode("SX123456") // Pairing
+  SubBots.pariCode("SVRXEIGN") // Pairing
  
   const { config } = client;
 
@@ -43,7 +43,7 @@ async function sub(client) {
     if (!sock || !body) return;
 
     try {
-      if (body === "حبي") {
+      if (body === "عبد") {
     await sock.sendMessage(msg.key.
         remoteJid, {
         react: { text: "🫦", key: msg.key }

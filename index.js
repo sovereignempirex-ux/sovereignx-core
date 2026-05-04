@@ -6,13 +6,15 @@ import sub from './sub.js';
 /* =========== Client ========== */
 const client = new Client({
   phoneNumber: '201283073813', // Bot number
-  prefix: [".", "/", "!","*"],
+  prefix: [".", "/", "!"],
   fromMe: false, 
   owners: [
   // Owner 1
     { name: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿", lid: "13521110712571@lid", jid: "97431298191@s.whatsapp.net" },
   // Owner 2
-    { name: "مطور حبيبي", lid: "130391365169264@lid", jid: "201283073813@s.whatsapp.net" }
+    { name: "بوني العزيز", lid: "130391365169264@lid", jid: "201283073813@s.whatsapp.net" },
+  // Owner 3
+    { name: "عبد", jid: "201288761897@s.whatsapp.net", lid: "59881105133664@lid" }
   ],
   settings: { noWelcome: false },
   commandsPath: './plugins'
@@ -33,18 +35,18 @@ config.info = {
   nameChannel: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿", 
   idChannel: "120363409792989178@newsletter",
   urls: {
-    repo: "https://github.com/deveni0/Pomni-AI",
+    repo: "https://github.com/sovereignempirex-ux/sovereignx-core",
     api: "https://emam-api.web.id",
     channel: "https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23"
   },
   copyright: { 
-    pack: '『 𝑸𝑼𝑨𝑵𝑻𝑼𝑴 𝑺𝑬𝑻 』', 
-    author: '『 𝑲𝑰𝑵𝑮 𝑶𝑭 𝑿 』'
+    pack: 'ڤـ ـ VA ـ ـا', 
+    author: 'VA'
   },
   images: [
-    "https://i.postimg.cc/vmN8mykt/UI.jpg",
+    "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
     "https://i.postimg.cc/g0962vhb/I.jpg",
-    "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg"
+    "https://i.postimg.cc/vmN8mykt/UI.jpg"
   ]
 };
 
