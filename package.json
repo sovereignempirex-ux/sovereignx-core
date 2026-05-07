@@ -1,13 +1,13 @@
 {
-  "name": "Pomni AI",
-  "version": "2.0.0",
+  "name": "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿",
+  "version": "8.0.9",
   "description": "Simple WhatsApp bot, Modified by VENi - youssefv",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["whatsapp-bot", "pomni-ai"],
+  "keywords": ["whatsapp-bot", "SOVEREIGN"],
   "author": "VENi - youssefv",
   "license": "MIT",
   "dependencies": {
