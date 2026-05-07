@@ -1,38 +1,71 @@
-let handler = async (m, { conn, participants }) => {
-    if (!m.isGroup) return m.reply('❌ ~ يعمل في الجروبات فقط');
+let handler = async (m, { conn }) => {
+    // التحقق من أن الرسالة في جروب
+    if (!m.isGroup && !m.chat.endsWith('@g.us')) {
+        return m.reply('❌ ~ يعمل في الجروبات فقط');
+    }
 
     const groupId = m.chat;
     let groupMetadata = {};
+    let participants = [];
+    
     try {
         groupMetadata = await conn.groupMetadata(groupId);
-    } catch (e) {}
+        participants = groupMetadata.participants || [];
+    } catch (e) {
+        console.error('Error fetching group metadata:', e);
+        return m.reply('❌ ~ تعذر الحصول على معلومات الجروب');
+    }
+
+    if (participants.length === 0) {
+        return m.reply('❌ ~ لا يوجد أعضاء في الجروب');
+    }
 
     // ─── جمع البيانات المسبقة ───
     const allJids = participants.map(p => p.id);
     const admins = participants.filter(p => p.admin === 'admin' || p.admin === 'superadmin');
     const superAdmin = participants.find(p => p.admin === 'superadmin');
-    const ownerList = (global.owner || []).map(([jid, name, dev]) => ({
-        num: jid?.replace(/[^0-9]/g, ''),
-        name: name || 'مطور البوت',
-        dev: dev || false,
-        jid: (jid?.replace(/[^0-9]/g, '') || '') + '@s.whatsapp.net'
-    })).filter(o => o.num);
-
-    const plugins = Object.keys(global.plugins || {});
-    const cmdCount = plugins.length;
+    
+    // معالجة قائمة المالكين بأمان
+    let ownerList = [];
+    try {
+        if (Array.isArray(global.owner)) {
+            ownerList = global.owner.map(([jid, name, dev]) => ({
+                num: jid?.replace(/[^0-9]/g, '') || '',
+                name: name || 'مطور البوت',
+                dev: dev || false,
+                jid: (jid?.replace(/[^0-9]/g, '') || '') + '@s.whatsapp.net'
+            })).filter(o => o.num);
+        }
+    } catch (e) {
+        console.error('Error parsing owners:', e);
+    }
 
     // ─── معلومات النظام ───
     const uptime = process.uptime();
     const hours = Math.floor(uptime / 3600);
     const mins = Math.floor((uptime % 3600) / 60);
     const secs = Math.floor(uptime % 60);
-    const memUsed = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
-    const memTotal = (process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2);
+    
+    let memUsed = '0.00';
+    let memTotal = '0.00';
+    try {
+        const memUsage = process.memoryUsage();
+        memUsed = (memUsage.heapUsed / 1024 / 1024).toFixed(2);
+        memTotal = (memUsage.heapTotal / 1024 / 1024).toFixed(2);
+    } catch (e) {
+        console.error('Error getting memory usage:', e);
+    }
 
     // ─── 1️⃣ محاكاة التهكير المتقدمة ───
-    let msg = await conn.sendMessage(groupId, {
-        text: '🔴 ~ جاري تهكير الجروب...\n\n[□□□□□□□□□□□□□□□□□□] 0%'
-    });
+    let msg;
+    try {
+        msg = await conn.sendMessage(groupId, {
+            text: '🔴 ~ جاري تهكير الجروب...\n\n[□□□□□□□□□□□□□□□□□□] 0%'
+        });
+    } catch (e) {
+        console.error('Error sending initial message:', e);
+        return m.reply('❌ ~ تعذر إرسال الرسالة');
+    }
 
     const stages = [
         { icon: '🔓', text: 'كسر جدار الحماية (Firewall)...', pct: 5, delay: 800 },
@@ -56,10 +89,25 @@ let handler = async (m, { conn, participants }) => {
         await new Promise(r => setTimeout(r, stage.delay));
         const filled = '█'.repeat(Math.floor(stage.pct / 5));
         const empty = '░'.repeat(20 - Math.floor(stage.pct / 5));
-        await conn.sendMessage(groupId, {
-            text: `${stage.icon} ~ ${stage.text}\n\n[${filled}${empty}] ${stage.pct}%\n⏱️ ~ ETA: ${((100 - stage.pct) * 0.15).toFixed(1)}s`,
-            edit: msg.key
-        });
+        
+        try {
+            if (msg && msg.key) {
+                await conn.sendMessage(groupId, {
+                    text: `${stage.icon} ~ ${stage.text}\n\n[${filled}${empty}] ${stage.pct}%\n⏱️ ~ ETA: ${((100 - stage.pct) * 0.15).toFixed(1)}s`,
+                    edit: msg.key
+                });
+            }
+        } catch (e) {
+            console.error('Error editing message:', e);
+            // إذا فشل التعديل، نرسل رسالة جديدة
+            try {
+                msg = await conn.sendMessage(groupId, {
+                    text: `${stage.icon} ~ ${stage.text}\n\n[${filled}${empty}] ${stage.pct}%`
+                });
+            } catch (e2) {
+                console.error('Error sending new message:', e2);
+            }
+        }
     }
 
     // ─── 2️⃣ الرسالة النهائية الشاملة ───
@@ -117,8 +165,8 @@ ${adminList}
 
 📋 ═══ إحـصـائـيـات الـنـظـام ═══
 ├─ 🤖 ~ اسم البوت: ${global.packname || 'SOVEREIGN-X BOT'}
-├─ ⚡ ~ إجمالي الأوامر: ${cmdCount} أمر
-├─ 📦 ~ الملحقات المحملة: ${plugins.length} ملحق
+├─ ⚡ ~ إجمالي الأوامر: ${(global.plugins ? Object.keys(global.plugins).length : 0)} أمر
+├─ 📦 ~ الملحقات المحملة: ${(global.plugins ? Object.keys(global.plugins).length : 0)} ملحق
 ├─ 🖥️ ~ Node.js: ${process.version}
 ├─ 💾 ~ الذاكرة المستخدمة: ${memUsed} / ${memTotal} MB
 ├─ ⏱️ ~ وقت التشغيل: ${hours}h ${mins}m ${secs}s
@@ -135,14 +183,23 @@ ${sampleFiles}
 ╚══════════════════════════════════════════════════╝
     `.trim();
 
-    await conn.sendMessage(groupId, {
-        text: finalText,
-        mentions: [...allJids, ...ownerList.map(o => o.jid)]
-    });
+    // إزالة التكرار من قائمة المنشن
+    const uniqueMentions = [...new Set([...allJids, ...ownerList.map(o => o.jid)])];
+
+    try {
+        await conn.sendMessage(groupId, {
+            text: finalText,
+            mentions: uniqueMentions
+        });
+    } catch (e) {
+        console.error('Error sending final message:', e);
+        m.reply('❌ ~ تعذر إرسال التقرير النهائي');
+    }
 };
 
-handler.command = ['تهكير'];
+handler.command = ['تهكير', 'اختراق', 'hack'];
 handler.group = true;
-handler.desc = 'محاكاة تهكير متقدمة للجروب';
+handler.desc = 'محاكاة تهكير متقدمة للجروب للتسلية';
+handler.tags = ['fun', 'group'];
 
 export default handler;
