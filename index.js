@@ -6,8 +6,7 @@ import sub from './sub.js';
 /* =========== Client ========== */
 const client = new Client({
   phoneNumber: '201283073813', // Bot number
-  prefix: [".", "/", "!"],
-  fromMe: false, 
+  prefix: [".", "/", "!"], 
   owners: [
   // Owner 1
     { name: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿", lid: "13521110712571@lid", jid: "97431298191@s.whatsapp.net" },
@@ -40,8 +39,8 @@ config.info = {
     channel: "https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23"
   },
   copyright: { 
-    pack: 'ڤـ ـ VA ـ ـا', 
-    author: 'VA'
+    pack: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿', 
+    author: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿'
   },
   images: [
     "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
