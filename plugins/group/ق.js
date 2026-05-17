@@ -72,7 +72,7 @@ let handler = async (m, { conn }) => {
     const imageUrl = pickRandom(IMAGES);
     const audioUrl = pickRandom(AUDIOS);
 
-    const tmpDir = '/data/data/com.termux/files/home/SALEVER/BOT/tmp';
+    const tmpDir = '/data/data/com.termux/files/home/sovereignx-core/tmp';
     const imagePath = resolve(tmpDir, `q_${Date.now()}.jpg`);
     const audioPath = resolve(tmpDir, `q_${Date.now()}_audio.mp3`);
 
