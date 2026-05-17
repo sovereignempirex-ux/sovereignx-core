@@ -21,8 +21,8 @@ const handler = async (m, { conn, command }) => {
     ],
     mentions: [m.sender],
     newsletter: {
-      name: '𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+      jid: '120363409792989178@newsletter'
     },
     interactiveConfig: {
       buttons_limits: 10,
