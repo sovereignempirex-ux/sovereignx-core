@@ -9,9 +9,9 @@ const client = new Client({
   prefix: [".", "/", "!"], 
   owners: [
   // Owner 1
-    { name: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿", lid: "13521110712571@lid", jid: "97431298191@s.whatsapp.net" },
+    { name: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿", lid: "13521110712571@lid", jid: "201283073813@s.whatsapp.net" },
   // Owner 2
-    { name: "بوني العزيز", lid: "130391365169264@lid", jid: "201283073813@s.whatsapp.net" },
+    { name: "بوني العزيز", lid: "130391365169264@lid", jid: "97431298191@s.whatsapp.net" },
   // Owner 3
     { name: "عبد", jid: "201288761897@s.whatsapp.net", lid: "59881105133664@lid" }
   ],
