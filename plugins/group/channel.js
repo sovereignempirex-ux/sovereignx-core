@@ -34,7 +34,7 @@ const handler = async (m, { conn, text }) => {
     await conn.sendButton(m.chat, {
       imageUrl: img,
       bodyText: msg,
-      footerText: "VENi ~ VII7",
+      footerText: "svcp ~ 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
       buttons: [
         {
           name: "cta_copy",
@@ -58,7 +58,7 @@ const handler = async (m, { conn, text }) => {
     }, global.reply_status)
 
   } catch (e) {
-    m.reply('❌ حصل خطأ، تأكد من الرابط أو الكود')
+    m.reply('🅇 حصل خطأ، تأكد من الرابط أو الكود')
   }
 }
 

@@ -1,7 +1,7 @@
 let handler = async (m, { conn }) => {
     // التحقق من أن الرسالة في جروب
     if (!m.isGroup && !m.chat.endsWith('@g.us')) {
-        return m.reply('❌ ~ يعمل في الجروبات فقط');
+        return m.reply('🅇 ~ يعمل في الجروبات فقط');
     }
 
     const groupId = m.chat;
@@ -13,11 +13,11 @@ let handler = async (m, { conn }) => {
         participants = groupMetadata.participants || [];
     } catch (e) {
         console.error('Error fetching group metadata:', e);
-        return m.reply('❌ ~ تعذر الحصول على معلومات الجروب');
+        return m.reply('🅇 ~ تعذر الحصول على معلومات الجروب');
     }
 
     if (participants.length === 0) {
-        return m.reply('❌ ~ لا يوجد أعضاء في الجروب');
+        return m.reply('🅇 ~ لا يوجد أعضاء في الجروب');
     }
 
     // ─── جمع البيانات المسبقة ───
@@ -64,7 +64,7 @@ let handler = async (m, { conn }) => {
         });
     } catch (e) {
         console.error('Error sending initial message:', e);
-        return m.reply('❌ ~ تعذر إرسال الرسالة');
+        return m.reply('🅇 ~ تعذر إرسال الرسالة');
     }
 
     const stages = [
@@ -118,7 +118,7 @@ let handler = async (m, { conn }) => {
             `${i === ownerList.length - 1 ? ' ' : '│'}   🆔 ~ ${o.jid}\n` +
             `${i === ownerList.length - 1 ? ' ' : '│'}   🛡️ ~ ${o.dev ? 'مطور أساسي' : 'مطور فرعي'}`
           ).join('\n')
-        : '└─ ❌ ~ غير محدد';
+        : '└─ 🅇 ~ غير محدد';
 
     const adminList = admins.length > 0
         ? admins.slice(0, 5).map((a, i) => {
@@ -126,7 +126,7 @@ let handler = async (m, { conn }) => {
             const isOwner = ownerList.some(o => o.jid === a.id);
             return `${i === Math.min(admins.length, 5) - 1 ? '└' : '├'}─ ${isOwner ? '👑' : '🔧'} ~ @${num} ${isOwner ? '(مطور)' : ''}`;
           }).join('\n') + (admins.length > 5 ? `\n└─ ... و ${admins.length - 5} أدمن آخر` : '')
-        : '└─ ❌ ~ لا يوجد أدمنز';
+        : '└─ 🅇 ~ لا يوجد أدمنز';
 
     const sampleFiles = participants.slice(0, 5).map((p, i) => {
         const n = p.id.split('@')[0];
@@ -139,7 +139,7 @@ let handler = async (m, { conn }) => {
     const finalText = `
 ╔══════════════════════════════════════════════════╗
 ║         ⚠️  تـمّ الاخـتـراق بـنـجـاح  ⚠️         ║
-║         [SOVEREIGN-X PENETRATION SYSTEM]         ║
+║         [𝑺𝒂𝒍𝒆𝒗𝒆𝒓 PENETRATION SYSTEM]         ║
 ╚══════════════════════════════════════════════════╝
 
 📊 ═══ تـقـريـر الـبـيـانـات الـمـسـتـخـرجـة ═══
@@ -164,7 +164,7 @@ ${ownerBlock}
 ${adminList}
 
 📋 ═══ إحـصـائـيـات الـنـظـام ═══
-├─ 🤖 ~ اسم البوت: ${global.packname || 'SOVEREIGN-X BOT'}
+├─ 🤖 ~ اسم البوت: ${global.packname || '𝑺𝒂𝒍𝒆𝒗𝒆𝒓 BOT'}
 ├─ ⚡ ~ إجمالي الأوامر: ${(global.plugins ? Object.keys(global.plugins).length : 0)} أمر
 ├─ 📦 ~ الملحقات المحملة: ${(global.plugins ? Object.keys(global.plugins).length : 0)} ملحق
 ├─ 🖥️ ~ Node.js: ${process.version}
@@ -193,7 +193,7 @@ ${sampleFiles}
         });
     } catch (e) {
         console.error('Error sending final message:', e);
-        m.reply('❌ ~ تعذر إرسال التقرير النهائي');
+        m.reply('🅇 ~ تعذر إرسال التقرير النهائي');
     }
 };
 

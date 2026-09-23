@@ -126,10 +126,10 @@ let handler = async (m, { conn }) => {
         // الطريقة 1: صورة + صوت voice note في رسالة واحدة (contextInfo)
         await conn.sendMessage(m.chat, {
             image: { url: imagePath },
-            caption: `𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿`,
+            caption: `𝑺𝒂𝒍𝒆𝒗𝒆𝒓`,
             contextInfo: {
                 externalAdReply: {
-                    title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+                    title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
                     body: 'Wake up, slaves!',
                     mediaType: 2,  // audio
                     mediaUrl: audioUrl,
@@ -154,7 +154,7 @@ let handler = async (m, { conn }) => {
 
     } catch (error) {
         console.error('Q error:', error);
-        m.reply('❌ ~ فشل في جلب الصورة أو الصوت');
+        m.reply('🅇 ~ فشل في جلب الصورة أو الصوت');
     }
 };
 

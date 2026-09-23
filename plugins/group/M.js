@@ -24,7 +24,7 @@ const handler = async (m, { conn }) => {
         console.error(e);
 
         await conn.sendMessage(m.chat, {
-            text: '*❌≥ تعذر إرسال الفيديو M.mp4*'
+            text: '*🅇≥ تعذر إرسال الفيديو M.mp4*'
         }, { quoted: m });
     }
 };

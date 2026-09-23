@@ -1,6 +1,6 @@
 const handler = async (m, { conn, text }) => {
     const data = global.db.group?.[m.chat]?.nicknames;
-    if (!data) return m.reply('❌ لا يوجد ألقاب');
+    if (!data) return m.reply('🅇 لا يوجد ألقاب');
     
     const mentioned = await m.lid2jid(m.mentionedJid?.[0]);
     let jid = mentioned;
@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
         if (entry) [jid, nick] = entry;
     }
     
-    if (!jid || (mentioned && !nick)) return m.reply('❌ ما لقيتش');
+    if (!jid || (mentioned && !nick)) return m.reply('🅇 ما لقيتش');
     
     delete data[jid];
     m.reply(mentioned ? `🗑️ تم حذف لقب @${jid.split('@')[0]}` : `🗑️ تم حذف "${nick}"`, mentioned ? { mentions: [jid] } : null);

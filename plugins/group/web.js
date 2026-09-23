@@ -12,13 +12,13 @@ let handler = async (m, { conn }) => {
   // ─── التحقق من وجود المشروع ───
   if (!fs.existsSync(serverFile)) {
     return conn.sendMessage(m.chat, {
-      text: `❌ ┃ ملف السيرفر مش موجود!\nالمسار: ${serverFile}`,
+      text: `🅇 ┃ ملف السيرفر مش موجود!\nالمسار: ${serverFile}`,
       contextInfo: {
         externalAdReply: {
-          title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+          title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
           body: watermark,
           thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-          sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
           mediaType: 1,
           renderLargerThumbnail: true
         }
@@ -30,10 +30,10 @@ let handler = async (m, { conn }) => {
     text: `⏳ *جـاري تـشـغـيـل الـصـفـحـة...*\n\n🖥️ السيرفر: ${projectDir}\n🌐 ngrok: جاري التحميل...`,
     contextInfo: {
       externalAdReply: {
-        title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+        title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
         body: '𝑴𝒆𝒅𝒐 ~ 𝑻𝒉𝒆 𝑲𝒊𝒏𝒈 👑',
         thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-        sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
       }
@@ -113,7 +113,7 @@ let handler = async (m, { conn }) => {
                     `┃ 📁 *المسار:* ~/sovereignx-core\n` +
                     `┗━❋━◈━❋━┛\n\n` +
                     `*🎮 الألعاب المتاحة:*\n` +
-                    `• ⭕ ❌ XO (تيك تاك تو)\n` +
+                    `• ⭕ 🅇 XO (تيك تاك تو)\n` +
                     `• ♟️ شطرنج\n\n` +
                     `*📝 ملاحظة:*\n` +
                     `الرابط صالح طالما السيرفر شغال.\n` +
@@ -130,12 +130,12 @@ let handler = async (m, { conn }) => {
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: `120363409440454416@newsletter`,
+            newsletterJid: `120363412381946365@newsletter`,
             newsletterName: `𝑴𝒆𝒅𝒐`,
             serverMessageId: 0
           },
           externalAdReply: {
-            title: `🌐 𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 ~ 𝑨𝒓𝒆𝒏𝒂`,
+            title: `🌐 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 ~ 𝑨𝒓𝒆𝒏𝒂`,
             body: `𝑪𝒍𝒊𝒄𝒌 𝒕𝒐 𝑶𝒑𝒆𝒏`,
             thumbnailUrl: `https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg`,
             sourceUrl: publicUrl,
@@ -153,13 +153,13 @@ let handler = async (m, { conn }) => {
     console.error('Page start error:', e);
     await conn.sendMessage(m.chat, { delete: loadingMsg.key });
     return conn.sendMessage(m.chat, {
-      text: `❌ ┃ فـشـل تـشـغـيـل الـصـفـحـة.\n\n*السبب:* ${e.message}\n\n*جرب يدوياً:*\n\`\`\`cd ~/sovereignx-core && node server.js &\nngrok http 3000\`\`\``,
+      text: `🅇 ┃ فـشـل تـشـغـيـل الـصـفـحـة.\n\n*السبب:* ${e.message}\n\n*جرب يدوياً:*\n\`\`\`cd ~/sovereignx-core && node server.js &\nngrok http 3000\`\`\``,
       contextInfo: {
         externalAdReply: {
-          title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+          title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
           body: watermark,
           thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-          sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
           mediaType: 1,
           renderLargerThumbnail: true
         }

@@ -38,7 +38,7 @@ const handler = async (m, { conn }) => {
     } catch (e) {
         console.error('Error in 5 command:', e);
         await conn.sendMessage(m.chat, {
-            text: '*❌≥ تعذر جلب بيانات المستخدم*\n\n*تأكد من:*\n• أن المستخدم ليس مخفياً\n• أنك منشن شخص صحيح\n• أو رد على رسالته'
+            text: '*🅇≥ تعذر جلب بيانات المستخدم*\n\n*تأكد من:*\n• أن المستخدم ليس مخفياً\n• أنك منشن شخص صحيح\n• أو رد على رسالته'
         }, { quoted: m });
     }
 };

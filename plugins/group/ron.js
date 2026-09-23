@@ -20,7 +20,7 @@ const handler = async (m, { conn }) => {
         console.error(err);
 
         await conn.sendMessage(m.chat, {
-            text: '❌ تعذر إرسال الفيديو، تأكد من وجود S.mp4 داخل المجلد'
+            text: '🅇 تعذر إرسال الفيديو، تأكد من وجود S.mp4 داخل المجلد'
         }, { quoted: m });
     }
 };

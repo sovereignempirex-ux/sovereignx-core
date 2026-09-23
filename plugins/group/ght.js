@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text }) => {
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
-  let channelUrl = 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
+  let channelUrl = 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K';
 
   // ─── تحديد المقتول ───
   let victim = m.quoted ? m.quoted.sender : 
@@ -181,8 +181,8 @@ let handler = async (m, { conn, text }) => {
       forwardingScore: 9999,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409440454416@newsletter',
-        newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+        newsletterJid: '120363412381946365@newsletter',
+        newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
         serverMessageId: -1
       },
       externalAdReply: {

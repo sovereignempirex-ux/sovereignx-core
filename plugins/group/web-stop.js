@@ -19,10 +19,10 @@ let handler = async (m, { conn }) => {
       text: `🛑 *تـم إيـقـاف الـصـفـحـة*\n\nالسيرفر و ngrok تم إيقافهم.`,
       contextInfo: {
         externalAdReply: {
-          title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+          title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
           body: watermark,
           thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-          sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
           mediaType: 1,
           renderLargerThumbnail: true
         }
@@ -34,10 +34,10 @@ let handler = async (m, { conn }) => {
       text: `⚠️ *حـصـل خـطـأ فـي الإيـقـاف*\nجرب يدوياً:\n\`\`\`pkill -f 'node server.js' && pkill -f 'ngrok'\`\`\``,
       contextInfo: {
         externalAdReply: {
-          title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+          title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
           body: watermark,
           thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-          sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
           mediaType: 1,
           renderLargerThumbnail: true
         }
