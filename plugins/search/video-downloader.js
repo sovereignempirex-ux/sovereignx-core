@@ -3,12 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { OWNERS } from "../../system/config.js";
 
-// 👨‍💻 معلومات المطورين
-const OWNERS = [
-  { name: "𝓡𝓮𝓷 ⑅⃝♡", jid: "218924499104@s.whatsapp.net" },
-  { name: "♡◇ℳ𝒶𝓁𝒶𝓀◇♡", jid: "97431298191@s.whatsapp.net" }
-];
+// 👨‍💻 معلومات المطورين — من system/config.js (مصدر وحيد)
 
 // 🗂️ تخزين مؤقت للروابط والبحث
 const tempStorage = new Map();
@@ -158,13 +155,16 @@ async function searchCommand(m, { conn, text }) {
 
     if (results.length === 0) {
       await conn.sendMessage(m.chat, { delete: loadingMsg.key });
-      return m.reply("*❌ ~ فشل البحث في جميع الطرق ~*\n*جرب لاحقاً أو غيّر كلمة البحث*");
+      return m.reply("*🅇 ~ فشل البحث في جميع الطرق ~*\n*جرب لاحقاً أو غيّر كلمة البحث*");
     }
 
-    await conn.sendMessage(m.chat, { 
-      edit: loadingMsg.key, 
-      text: `✅ ~ نجح البحث via: ${results[0]?.source || 'mixed'} (${results.length} نتيجة)` 
-    });
+    const okText = `✅ ~ نجح البحث via: ${results[0]?.source || 'mixed'} (${results.length} نتيجة)`;
+    if (loadingMsg && typeof loadingMsg.edit === 'function') {
+      // loadingMsg بطاقة (من m.reply) — البطاقات لا تُعدَّل بـ edit:، فنستخدم .edit()
+      await loadingMsg.edit(okText);
+    } else {
+      await conn.sendMessage(m.chat, { text: okText });
+    }
     
     await new Promise(resolve => setTimeout(resolve, 500));
 
@@ -212,15 +212,15 @@ async function searchCommand(m, { conn, text }) {
       cards: cards,
       mentions: [m.sender],
       newsletter: {
-        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',  // ✅ تم التغيير هنا
-        jid: '120363409792989178@newsletter'
+        name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',  // ✅ تم التغيير هنا
+        jid: '120363412381946365@newsletter'
       }
     });
 
   } catch (error) {
     console.error(error);
-    m.react("❌");
-    return m.reply("*❌ ~ خطأ غير متوقع ~*");
+    m.react("🅇");
+    return m.reply("*🅇 ~ خطأ غير متوقع ~*");
   }
 }
 

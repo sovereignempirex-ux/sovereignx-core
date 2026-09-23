@@ -1,26 +1,33 @@
-import { createSticker } from "../../system/utils.js";
+import { createSticker, getCalmResponse } from "../../system/utils.js";
 
 const test = async (m, { conn, args }) => {
-  if (!m.quoted) return m.reply("❤️ ~ يرجى الرد على ملصق ~ 💙");
+  if (!m.quoted) return m.reply(await getCalmResponse('notFound') + "\n\nرد على ملصق واكتب .حقوق اسم | مؤلف");
   
   let [pack, author] = args.join(" ").split(" | ");
   
   if (!args.length) {
-    return m.reply("📝 *الاستخدام الصحيح:*\n\n.حقوق اسم الباك | اسم المؤلف\n\n*مثال:*\n`.حقوق venom | 2010`");
+    return m.reply("📝 *الاستخدام:*\n`.حقوق اسم الباك | اسم المؤلف`\n\n*مثال:*\n`.حقوق venom | 2010`");
   }
   
-  if (!pack) pack = "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿";
+  if (!pack) pack = "𝑺𝒶𝓁𝑒𝓋𝑒𝓇";
   if (author === undefined) author = null;
   
   const q = await m.quoted;
+  const waitMsg = await m.reply(await getCalmResponse('thinking'));
   
-  const buffer = await createSticker(await q.download(), { mime: q.mimetype, pack, author });
+  try {
+    const buffer = await createSticker(await q.download(), { mime: q.mimetype, pack, author });
 
-  await conn.sendMessage(
-    m.chat,
-    { sticker: buffer, contextInfo: context(m.sender, "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg") },
-    { quoted: global.reply_status }
-  );
+    await conn.sendMessage(
+      m.chat,
+      { sticker: buffer, contextInfo: context(m.sender, await getXAsset()) },
+      { quoted: global.reply_status }
+    );
+    
+    await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, id: waitMsg.key.id, fromMe: true } });
+  } catch (e) {
+    await waitMsg.edit(await getCalmResponse('error'));
+  }
 };
 
 test.usage = ["حقوق نص | نص"];
@@ -28,20 +35,30 @@ test.command = ["حقوق"];
 test.category = "sticker";
 export default test;
 
+const getXAsset = async () => {
+  try {
+    const procModule = await import('../../system/utils.js');
+    const { getXAsset: getX } = procModule;
+    return await getX();
+  } catch (e) {
+    return "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg";
+  }
+};
+
 const context = (jid, img) => ({
     mentionedJid: [jid],
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
-        newsletterName: '𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
+        newsletterJid: '120363412381946365@newsletter',
+        newsletterName: '𝑺𝒶𝓁𝑒𝓋𝑒𝓇',
         serverMessageId: 0
     },
     externalAdReply: {
-        title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
-        body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
+        title: "𝑺𝒶𝓁𝑒𝓋𝑒𝓇 🎪",
+        body: "بوت هادي وجميل • 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
     }
