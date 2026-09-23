@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: '120363412381946365@newsletter',
         newsletterName: '𝑵𝑨𝑺𝑰𝑯 ~ 𝑻𝒉𝒆 𝑾𝒊𝒔𝒆 🕌',
         serverMessageId: 0
     },
@@ -44,7 +44,7 @@ const context = (jid, img) => ({
         title: "𝑵𝑨𝑺𝑰𝑯 📿 | 𝑾𝒊𝒔𝒅𝒐𝒎 𝒇𝒓𝒐𝒎 𝑭𝒂𝒊𝒕𝒉",
         body: "𝑮𝒖𝒊𝒅𝒂𝒏𝒄𝒆 ~ ☆ 𝑷𝒂𝒕𝒊𝒆𝒏𝒄𝒆 ~ ☆ 𝑳𝒊𝒈𝒉𝒕 (⁠｡⁠✧⁠ω⁠✧⁠｡⁠)",
         thumbnailUrl: img,
-        sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
     }

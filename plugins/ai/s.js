@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: '120363412381946365@newsletter',
         newsletterName: '𝑺𝑰𝑳𝑽𝑬𝑹 ~ 𝑻𝒉𝒆 𝑵𝒐𝒃𝒍𝒆 𝑶𝒏𝒆 🥈',
         serverMessageId: 0
     },
@@ -44,7 +44,7 @@ const context = (jid, img) => ({
         title: "𝑺𝑰𝑳𝑽𝑬𝑹 ✨ | 𝑻𝒉𝒆 𝑬𝒎𝒊𝒏𝒆𝒏𝒄𝒆 𝒐𝒇 𝑺𝒕𝒓𝒆𝒏𝒈𝒕𝒉",
         body: "𝑷𝒖𝒓𝒆 ~ ☆ 𝑹𝒂𝒓𝒆 ~ ☆ 𝑼𝒏𝒃𝒓𝒆𝒂𝒌𝒂𝒃𝒍𝒆 (⁠｡⁠✧⁠ω⁠✧⁠｡⁠)",
         thumbnailUrl: img,
-        sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
     }
