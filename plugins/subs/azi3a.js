@@ -1,6 +1,6 @@
 const run = async (m, { conn, bot }) => {
   const sub = global.subBots;
-  if (!sub) return m.reply("❌ نـظـام الـبـوتـات الـفـرعـيـه غير متاح");
+  if (!sub) return m.reply("🅇 نـظـام الـبـوتـات الـفـرعـيـه غير متاح");
   
   if (!m.quoted) return m.reply("📝 قم بالرد على الرسالة التي تريد إذاعتها");
   
@@ -52,7 +52,7 @@ const run = async (m, { conn, bot }) => {
 ✓🌹 الـبـوتـات: ${activeBots.length}
 ✓🫒 الـجـروبـات: ${groupCount}
 ⊱⋅ ──────────── ⋅⊰
-> *_VII7 SubBot System_*`);
+> *_𝑺𝒂𝒍𝒆𝒗𝒆𝒓 SubBot System_*`);
 };
 
 run.command = ["اذاعة_فرعي", "اذاعه_فرعي"];

@@ -1,6 +1,6 @@
 const run = async (m, { conn, bot }) => {
   const sub = global.subBots;
-  if (!sub) return m.reply("❌ نـظـام الـبـوتـات الـفـرعـيـه غير متاح");
+  if (!sub) return m.reply("🅇 نـظـام الـبـوتـات الـفـرعـيـه غير متاح");
 
   const stats = sub.stats();
   const uptime = process.uptime();
@@ -19,7 +19,7 @@ const run = async (m, { conn, bot }) => {
 ⊱⋅ ──────────── ⋅⊰
 🆔 — البوت الرئيسي: ${bot.sock.user.id.split('@')[0]}
 ⊱⋅ ──────────── ⋅⊰
-> *_VII7 SubBot System_*`;
+> *_𝑺𝒂𝒍𝒆𝒗𝒆𝒓 SubBot System_*`;
 
   await m.reply(text);
 };

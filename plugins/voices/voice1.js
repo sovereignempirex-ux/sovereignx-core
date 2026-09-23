@@ -107,7 +107,7 @@ const run = async (m, { conn, bot, command }) => {
             num = 30;
             break;
         default:
-            return m.reply("❌ أمر غير معروف");
+            return m.reply("🅇 أمر غير معروف");
     }
     
     const result = await Scrapy.VoiceChange({ url: link, num: num.toString() });

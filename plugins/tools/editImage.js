@@ -5,8 +5,8 @@ import { uploadToCatbox } from "../../system/utils.js";
 
 let handler = async (m, { conn, bot, text }) => {
   try {
-    if (!m.quoted?.mimetype) return m.reply("*❌ ~ رد علي الصوره اولاً ~*");
-    if (!m.quoted.mimetype.startsWith('image/')) return m.reply("*❌ ~ ده مش ملف صوره ~*");
+    if (!m.quoted?.mimetype) return m.reply("*🅇 ~ رد علي الصوره اولاً ~*");
+    if (!m.quoted.mimetype.startsWith('image/')) return m.reply("*🅇 ~ ده مش ملف صوره ~*");
     if (!text) return m.reply("*💬 ~ اكتب التعديل المطلوب ~*");
     
     m.react("⚡");
@@ -20,7 +20,7 @@ let handler = async (m, { conn, bot, text }) => {
     });
     
     if (!editRes?.status || !editRes?.recordId) {
-      return m.reply("*❌ ~ فشل في بدء عملية التعديل ~*");
+      return m.reply("*🅇 ~ فشل في بدء عملية التعديل ~*");
     }
     
     const waitMsg = await m.reply("*🎨 ~ جاري تعديل الصورة... قد يستغرق هذا دقيقة ~*");
@@ -35,7 +35,7 @@ let handler = async (m, { conn, bot, text }) => {
       }
     }
    
-    if (!result) return m.reply("*❌ ~ لم يتم الانتهاء من التعديل في الوقت المحدد ~*");
+    if (!result) return m.reply("*🅇 ~ لم يتم الانتهاء من التعديل في الوقت المحدد ~*");
     
     await conn.sendMessage(m.chat, {
       image: { url: result },
@@ -44,7 +44,7 @@ let handler = async (m, { conn, bot, text }) => {
     
   } catch (error) {
     console.error(error);
-    return m.reply("*❌ ~ حدث خطأ أثناء تعديل الصورة ~*");
+    return m.reply("*🅇 ~ حدث خطأ أثناء تعديل الصورة ~*");
   }
 };
 

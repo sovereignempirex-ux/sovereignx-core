@@ -12,7 +12,7 @@ if (subBots.list().length >= 30) {
     if (!/^\d+$/.test(num)) return m.reply("⚠️ رقم الهاتف غير صالح");
 
     const sub = global.subBots;
-    if (!sub) return m.reply("❌ نظام البوتات الفرعية غير متاح");
+    if (!sub) return m.reply("🅇 نظام البوتات الفرعية غير متاح");
 
     const init = await m.reply(`⏳ جاري تنصيب بوت للرقم *${num}*...`);
 
@@ -92,19 +92,19 @@ const Func = {
 🔑 — الكود: ${code}
 ⊱⋅ ──────────── ⋅⊰
 > *_افتح واتساب > الأجهزة المرتبطة > ربط جهاز برقم الهاتف > أدخل الكود_*`,
-      footerText: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑺𝑶𝑴",
+      footerText: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔",
       buttons: [
         { name: "cta_copy", params: { display_text: "⟨🎪| 𝐂𝐨𝐩𝐲 𝐂𝐨𝐝𝐞 |🎪⟩", copy_code: code } },
         { name: "cta_url", params: { display_text: "⟨🫒| 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 𝐒𝐦 |🫒⟩", url: "https://google.com" } },
       ],
       mentions: [m.sender],
       newsletter: {
-        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-        jid: '120363409792989178@newsletter'
+        name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+        jid: '120363412381946365@newsletter'
       },
       interactiveConfig: {
         buttons_limits: 10,
-        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑽𝑰𝑰",
+        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔",
         button_title: "Click Here",
         canonical_url: `https://code.com/${code}`
       }
@@ -117,7 +117,7 @@ const Func = {
       text: `✅ — *تـم الاتـصـال بـنـجـاح*\n\n📱 الرقم: ${num}\n> *البوت جاهز للاستخدام الآن*`,
       contextInfo: {
         externalAdReply: {
-          title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
+          title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🎪 | بوت واتساب مبنى على إطار 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
           body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
           thumbnailUrl: img,
           sourceUrl: '',
@@ -129,7 +129,7 @@ const Func = {
   },
 
   error: async (conn, num, err, m) => {
-    await m.reply(`❌ *فشل الاقتران!*\n\n📱 الرقم: ${num}\n⚠️ الخطأ: ${err?.message || 'غير معروف'}`);
+    await m.reply(`🅇 *فشل الاقتران!*\n\n📱 الرقم: ${num}\n⚠️ الخطأ: ${err?.message || 'غير معروف'}`);
   },
 
   timeout: async (conn, m, pairDone) => {
