@@ -40,7 +40,7 @@ let handler = async (m, { conn, text }) => {
     if (!surahNumber) {
       await conn.sendMessage(m.chat, { delete: loadingMsg.key });
       return conn.sendMessage(m.chat, {
-        text: `❌ ┃ مـالـقـيـتـش سـورة بـهـذا الاسم أو الرقم.`,
+        text: `🅇 ┃ مـالـقـيـتـش سـورة بـهـذا الاسم أو الرقم.`,
         contextInfo: context(m.sender, `https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg`)
       }, { quoted: m });
     }
@@ -76,7 +76,7 @@ let handler = async (m, { conn, text }) => {
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: `120363409792989178@newsletter`,
+          newsletterJid: `120363412381946365@newsletter`,
           newsletterName: `𝑴𝒆𝒅𝒐`,
           serverMessageId: 0
         },
@@ -95,7 +95,7 @@ let handler = async (m, { conn, text }) => {
     console.error(e);
     await conn.sendMessage(m.chat, { delete: loadingMsg.key });
     return conn.sendMessage(m.chat, {
-      text: `❌ ┃ حـصـل خـطـأ فـي جـلـب الـسـورة.`,
+      text: `🅇 ┃ حـصـل خـطـأ فـي جـلـب الـسـورة.`,
       contextInfo: context(m.sender, `https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg`)
     }, { quoted: m });
   }
@@ -112,7 +112,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: `120363409440454416@newsletter`,
+        newsletterJid: `120363412381946365@newsletter`,
         newsletterName: `𝑴𝒆𝒅𝒐`,
         serverMessageId: 0
     },

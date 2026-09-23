@@ -1,5 +1,5 @@
 let handler = async (m, { conn, args, isOwner }) => {
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
 
   let quoted = {
     key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' },
@@ -21,7 +21,7 @@ let handler = async (m, { conn, args, isOwner }) => {
     let cmd = args[0].toLowerCase();
 
     if (cmd === 'تفعيل') {
-      if (!isOwner) return conn.sendMessage(m.chat, { text: '❌ للمطور فقط!' }, { quoted });
+      if (!isOwner) return conn.sendMessage(m.chat, { text: '🅇 للمطور فقط!' }, { quoted });
       global.contentFilter.add(chatId);
       return conn.sendMessage(m.chat, {
         text: '✅ *تم تفعيل فلتر المحتوى*\nسيتم طرد من يكتب كلمات محظورة أو يرسل محتوى إباحي.',
@@ -30,7 +30,7 @@ let handler = async (m, { conn, args, isOwner }) => {
           externalAdReply: {
             title: '𝑇𝛨𝛯 𝛩𝑊𝛯𝑅',
             body: watermark,
-            sourceUrl: 'https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23',
+            sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
             thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
             mediaType: 1,
             renderLargerThumbnail: true
@@ -40,7 +40,7 @@ let handler = async (m, { conn, args, isOwner }) => {
     }
 
     if (cmd === 'قفل') {
-      if (!isOwner) return conn.sendMessage(m.chat, { text: '❌ للمطور فقط!' }, { quoted });
+      if (!isOwner) return conn.sendMessage(m.chat, { text: '🅇 للمطور فقط!' }, { quoted });
       global.contentFilter.delete(chatId);
       return conn.sendMessage(m.chat, {
         text: '🔒 *تم إيقاف فلتر المحتوى*',
@@ -49,7 +49,7 @@ let handler = async (m, { conn, args, isOwner }) => {
           externalAdReply: {
             title: '𝑇𝛨𝛯 𝛩𝑊𝛯𝑅',
             body: watermark,
-            sourceUrl: 'https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23',
+            sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
             thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
             mediaType: 1,
             renderLargerThumbnail: true
@@ -68,7 +68,7 @@ let handler = async (m, { conn, args, isOwner }) => {
         externalAdReply: {
           title: '𝑇𝛨𝛯 𝛩𝑊𝛯𝑅',
           body: watermark,
-          sourceUrl: 'https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
           thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
           mediaType: 1,
           renderLargerThumbnail: true
@@ -93,7 +93,7 @@ handler.before = async function (m, { conn, isOwner }) {
   }
   if (ownerCheck) return;
 
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
   let senderTag = m.sender.split('@')[0];
 
   // ─── تهيئة التتبع ───
@@ -348,7 +348,7 @@ handler.before = async function (m, { conn, isOwner }) {
 
       if (!isBotAdmin) {
         return conn.sendMessage(m.chat, {
-          text: `❌ *البوت ليس أدمناً* — لا يمكن طرد @${senderTag}.\n*${reason}*`,
+          text: `🅇 *البوت ليس أدمناً* — لا يمكن طرد @${senderTag}.\n*${reason}*`,
           mentions: [m.sender]
         });
       }
@@ -362,7 +362,7 @@ handler.before = async function (m, { conn, isOwner }) {
     } catch (err) {
       console.error('فشل الطرد:', err);
       await conn.sendMessage(m.chat, {
-        text: `❌ فشل طرد @${senderTag} — تأكد من صلاحيات البوت.`,
+        text: `🅇 فشل طرد @${senderTag} — تأكد من صلاحيات البوت.`,
         mentions: [m.sender]
       });
     }

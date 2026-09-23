@@ -96,7 +96,7 @@ handler.before = async (m, { conn }) => {
   if (m.quoted?.id !== cur.id && m.text?.toLowerCase() !== cur.answer) return;
   
   const answer = m.text.toLowerCase().trim();
-  if (!cur.opts.includes(answer)) return m.reply("❌ غلط");
+  if (!cur.opts.includes(answer)) return m.reply("🅇 غلط");
   
   clearTimeout(cur.timer);
   g.current = null;
@@ -109,7 +109,7 @@ handler.before = async (m, { conn }) => {
     });
     setTimeout(() => handler(m, { conn }), 200);
   } else {
-    await m.reply("❌ غلط");
+    await m.reply("🅇 غلط");
   }
   return true;
 };

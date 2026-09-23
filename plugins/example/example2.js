@@ -1,3 +1,5 @@
+import { BOT_NUMBER } from "../../system/config.js";
+
 const example = async (m, { conn }) => {
 
 await conn.sendButton(m.chat, {
@@ -13,7 +15,7 @@ await conn.sendButton(m.chat, {
     { name: "cta_url", params: { display_text: "🔗 Google Link", url: "https://google.com" } },
     
     // 3. Call Button
-    { name: "cta_call", params: { display_text: "📞 Call Support", phone_number: "201283073813" } },
+    { name: "cta_call", params: { display_text: "📞 Call Support", phone_number: BOT_NUMBER } },
     
     // 4. Copy Button
     { name: "cta_copy", params: { display_text: "📋 Copy Code", copy_code: "ABC123XYZ" } },
@@ -33,14 +35,14 @@ await conn.sendButton(m.chat, {
     // 6. Call Permission Request
     { name: "call_permission_request", params: { 
       display_text: "📞 Request Call",
-      phone_number: "201283073813",
+      phone_number: BOT_NUMBER,
       duration: 60
     }}
   ],
   mentions: [m.sender],
   newsletter: {
-      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-      jid: '120363409792989178@newsletter'
+      name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      jid: '120363412381946365@newsletter'
     },
   interactiveConfig: {
     buttons_limits: 10,

@@ -87,7 +87,7 @@ ${list}
     const index = parseInt(text) - 1
 
     if (index < 0 || index >= names.length) {
-      return m.reply(`❌ الرقم لازم يكون بين 1 و ${names.length}`)
+      return m.reply(`🅇 الرقم لازم يكون بين 1 و ${names.length}`)
     }
 
     selected = names[index]
@@ -101,7 +101,7 @@ ${list}
       const near = closestMatch(text, names)
 
       return m.reply(
-`❌ الملف غير موجود
+`🅇 الملف غير موجود
 
 ${near ? `🫦 ربما تقصد : ${near}` : ''}
 
@@ -144,7 +144,7 @@ ${parts[i]}
 
     console.log(e)
 
-    m.reply(`❌ حصل خطأ\n\n${e}`)
+    m.reply(`🅇 حصل خطأ\n\n${e}`)
   }
 }
 

@@ -4,10 +4,10 @@ const handler = async (m, { conn }) => {
     const target = await m.lid2jid(m.quoted?.sender) || m.mentionedJid?.[0];
     
     if (!target) return m.reply(`*🕊️ رد على رسالة العضو أو منشن العضو*\nمثال: .سرقة @user`);
-    if (target === m.sender) return m.reply(`*❌ لا يمكنك سرقة نفسك*`);
+    if (target === m.sender) return m.reply(`*🅇 لا يمكنك سرقة نفسك*`);
     
     const userTarget = global.db?.users[target];
-    if (!userTarget?.xp) return m.reply(`*❌ هذا العضو ليس لديه نقاط*`);
+    if (!userTarget?.xp) return m.reply(`*🅇 هذا العضو ليس لديه نقاط*`);
     if (userTarget.xp < 50) return m.reply(`*🤲 حرام ده فقير! عنده بس ${userTarget.xp} نقطة*\n> خليه يجمع شوية الأول`);
     
     const now = Date.now();
@@ -30,7 +30,7 @@ const handler = async (m, { conn }) => {
         await conn.sendMessage(m.chat, {
             image: { url: pic },
             caption: `╭─┈─┈─⟞🚨⟝─┈─┈─╮
-┃ ❌ فـشـلـت الـسـرقـة
+┃ 🅇 فـشـلـت الـسـرقـة
 ╰─┈─┈─⟞💔⟝─┈─┈─╯
 
 ┃ @${m.sender.split('@')[0]}

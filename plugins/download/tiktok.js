@@ -1,35 +1,71 @@
+/* ========== 𝑺𝒂𝒍𝒆𝒗𝑒𝓇 · تيك توك (موجّه ذكي) ==========
+ * .تيك <رابط>  → تنزيل الفيديو (ssstik)
+ * .تيك <كلمة>  → بحث كاروسيل عبر plugins/search/tiktok.js
+ *
+ * نفس منطق الاتجاه: رابط ← تحميل، كلمة ← بحث.
+ */
+
 import crypto from 'crypto';
 import cheerio from 'cheerio';
 import axios from 'axios';
 import qs from 'qs';
 
-const ff = async (m, { text, conn }) => {
-  if (!text) return m.reply("❌: حط رابط الفيديو جنب الأمر");
-  
-  try {
-    
-    const videoData = await downloadTikTok(text);
+import { tiktokSearch } from '../search/tiktok.js';
+import { getCalmResponse } from '../../system/config.js';
 
-    if (!videoData.videoUrl && !videoData.audioUrl) {
-      return m.reply("❌ Failed to download video");
-    }
+/* يُعامل كرابط: http/https، أو نطاق تيك توك يليه مسار */
+const LINK_RE = /https?:\/\/\S+|www\.\S+|(?:[a-z0-9-]+\.)*tiktok\.com\/\S+|tikcdn\.\S+/i;
 
-    if (videoData.videoUrl) {
-      await conn.sendMessage(m.chat, { video: { url: videoData.videoUrl }, caption: `🟢 ${videoData.description || "no description"}` });
-    }
-    
-    if (videoData.audioUrl) {
-      await conn.sendMessage(m.chat, { audio: { url: videoData.audioUrl }, mimetype: 'audio/mpeg' });
-    }
-    
-  } catch (error) {
-    console.error(error.message);
-    m.reply(error.message);
+const ff = async (m, { text, conn, usedPrefix = '.', command } = {}) => {
+  const q = String(text ?? '').trim();
+
+  if (!q) {
+    return m.reply(
+      `${getCalmResponse('notFound')}\n\n` +
+      `✎ رابط ← تنزيل الفيديو\n` +
+      `✎ كلمة ← بحث في تيك توك\n\n` +
+      `مثال: ${usedPrefix}تيك قطة`
+    );
   }
+
+  /* ---------- مسار 1: رابط ← تنزيل ---------- */
+  if (LINK_RE.test(q)) {
+    try {
+      const videoData = await downloadTikTok(q);
+
+      if (!videoData.videoUrl && !videoData.audioUrl) {
+        try { await m.react('🅇'); } catch { /* تجاهل */ }
+        return m.reply(`${getCalmResponse('error')}\n\n🅇 تعذّر تنزيل الفيديو 🌿`);
+      }
+
+      if (videoData.videoUrl) {
+        await conn.sendMessage(m.chat, {
+          video: { url: videoData.videoUrl },
+          caption: `🌿 ${videoData.description || 'بدون وصف'}`
+        });
+      }
+
+      if (videoData.audioUrl) {
+        await conn.sendMessage(m.chat, {
+          audio: { url: videoData.audioUrl },
+          mimetype: 'audio/mpeg'
+        });
+      }
+    } catch (error) {
+      console.error('[tiktok]', error?.message || error);
+      try { await m.react('🅇'); } catch { /* تجاهل */ }
+      return m.reply(`${getCalmResponse('error')}\n\n🅇 تعذّر تنزيل الفيديو، جرّب الرابط تاني 🌿`);
+    }
+    return;
+  }
+
+  /* ---------- مسار 2: كلمة ← بحث ---------- */
+  return tiktokSearch(m, { conn, text: q, usedPrefix, command });
 };
-ff.usage = ["تيك"]
-ff.category = "downloads";
-ff.command = ["تيك", "tiktok", "tt"];
+
+ff.usage = ['تيك'];
+ff.category = 'downloads';
+ff.command = ['تيك', 'tiktok', 'tt'];
 export default ff;
 
 

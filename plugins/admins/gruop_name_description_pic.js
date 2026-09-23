@@ -1,5 +1,5 @@
 const handler = async (m, { conn, text, command }) => {
-    if (!m.isGroup) return m.reply('❌ الأمر ده للجروبات بس');
+    if (!m.isGroup) return m.reply('🅇 الأمر ده للجروبات بس');
 
     const actions = {
         'جروب_اسم': async () => {

@@ -6,8 +6,8 @@ const handler = async (m, { conn, text, bot }) => {
     return m.reply("✅ تم إرسال طلبك للمطور");
   }
 
-  if (!text) return m.reply("❌ أرسل رابط جروب واتساب");
-  if (!text.includes("https://chat.whatsapp.com/")) return m.reply("❌ رابط واتساب فقط");
+  if (!text) return m.reply("🅇 أرسل رابط جروب واتساب");
+  if (!text.includes("https://chat.whatsapp.com/")) return m.reply("🅇 رابط واتساب فقط");
 
   m.react("📂");
   await conn.groupJoin(text);

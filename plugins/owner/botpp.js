@@ -8,7 +8,7 @@ const handler = async (m, { conn }) => {
 
     try {
         const media = await q.download();
-        await conn.updateProfilePicture(conn.user.jid, media);
+        await conn.updateProfilePicture(conn.user?.id, media);
         m.reply('✅ ~ تم تغيير صورة بروفايل البوت');
     } catch (error) {
         console.error(error);

@@ -23,7 +23,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       if (quality && url) downloads.push({ quality, url });
     });
 
-    if (!downloads.length) throw '❌ لا يوجد فيديو متاح للتحميل';
+    if (!downloads.length) throw '🅇 لا يوجد فيديو متاح للتحميل';
 
     const caption = `> *تم بواسطة ~ ${m.pushName}*`;
 
@@ -34,7 +34,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
   } catch (e) {
     console.log(e.message);
-    m.react('❌');
+    m.react('🅇');
   }
 };
 

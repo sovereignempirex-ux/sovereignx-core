@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: '120363412381946365@newsletter',
         newsletterName: '𝐈𝐓𝐀𝐂𝐇𝐈 ~ 𝐀𝐤𝐚𝐭𝐬𝐮𝐤𝐢 🍂',
         serverMessageId: 0
     },

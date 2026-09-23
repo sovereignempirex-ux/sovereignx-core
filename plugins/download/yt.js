@@ -4,13 +4,13 @@ const handler = async (m, { conn, command, text }) => {
   if (!text) throw '*❲ ❤️ ❳ ~ حط رابط جنب الامر ~ ❲ 💙 ❳ *';
   
   if (!text.match(/youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\//)) {
-    throw '*❌ ~ الرابط مش صحيح ~ حط رابط يوتيوب صحيح*';
+    throw '*🅇 ~ الرابط مش صحيح ~ حط رابط يوتيوب صحيح*';
   }
   
   const isAudio = command === "يوت_اغنيه" || command === "ytmp3";
   const res = await (isAudio ? Scrapy.ytmp3(text) : Scrapy.ytmp4(text));
   
-  if (!res?.status) throw '❌ فشل في جلب البيانات من الرابط';
+  if (!res?.status) throw '🅇 فشل في جلب البيانات من الرابط';
   
   const type = isAudio ? 'اغـانـي' : 'فيـديـوز';
   let caption = `*🐞 YouTube | يـوتـيـوب ${type} 🐞*\n\n`;
@@ -28,8 +28,8 @@ const handler = async (m, { conn, command, text }) => {
       isForwarded: true,
       forwardingScore: 1,
       forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
-        newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+        newsletterJid: '120363412381946365@newsletter',
+        newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
         serverMessageId: 0
       },
       externalAdReply: {

@@ -32,7 +32,7 @@ const handler = async (m, { conn, participants }) => {
     for (let user of users) {
       // يتجنب طرد البوت والمالك
       if (
-        user !== conn.user.jid &&
+        String(user).split('@')[0].split(':')[0] !== String(conn.user?.id || '').split('@')[0].split(':')[0] &&
         user !== m.sender
       ) {
         try {

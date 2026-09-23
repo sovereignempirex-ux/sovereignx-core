@@ -6,7 +6,7 @@ let handler = async (m, { conn, text }) => {
 
   const { data } = await Scrapy.spotify(text);
 
-  if (!data) return m.reply("❌ : حصل مشكله في التحميل أتأكد من الرابط");
+  if (!data) return m.reply("🅇 : حصل مشكله في التحميل أتأكد من الرابط");
 
   await conn.sendMessage(m.chat, { 
     audio: { url: data.download }, 

@@ -39,7 +39,7 @@ async function handler(m, { conn, command, args }) {
     if (!subCmd) {
         await conn.sendButton(m.chat, {
             bodyText:  menu,
-            footerText: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿",
+            footerText: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
             buttons: [
     { name: "quick_reply", params: { display_text: "🪐 ايقاف التنصيب (البوتات الفرعي)", id: ".تفعيل ايقاف_الفرعي" } },
     { name: "quick_reply", params: { display_text: "🚀 تشغيل التنصيب", id: ".تفعيل تشغيل_الفرعي" } },
@@ -56,8 +56,8 @@ async function handler(m, { conn, command, args }) {
 ],
           mentions: [m.sender],
   newsletter: {
-      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-      jid: '120363409792989178@newsletter'
+      name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      jid: '120363412381946365@newsletter'
     },
   interactiveConfig: {
     buttons_limits: 1, // لازم تبقي واحد
@@ -74,7 +74,7 @@ async function handler(m, { conn, command, args }) {
     switch (subCmd) {
     case 'ايقاف_الفرعي':
             if (!m.isOwner) {
-                result = '*❌ الأمر ده بس لـ المطور*';
+                result = '*🅇 الأمر ده بس لـ المطور*';
                 break;
             }
             global.db.noSub = true;
@@ -83,7 +83,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'تشغيل_الفرعي':
             if (!m.isOwner) {
-                result = '*❌ الأمر ده بس لـ المطور*';
+                result = '*🅇 الأمر ده بس لـ المطور*';
                 break;
             }
             global.db.noSub = false;
@@ -91,7 +91,7 @@ async function handler(m, { conn, command, args }) {
             break;
         case 'ايقاف_الترحيب':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].noWelcome = true;
@@ -100,7 +100,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'تشغيل_الترحيب':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].noWelcome = false;
@@ -109,7 +109,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'تشغيل_الادمن':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].adminOnly = true;
@@ -118,7 +118,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'ايقاف_الادمن':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].adminOnly = false;
@@ -127,7 +127,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'مطور_فقط':
             if (!m.isOwner) {
-                result = '*❌ هذا الأمر للمطور فقط*';
+                result = '*🅇 هذا الأمر للمطور فقط*';
                 break;
             }
             global.db.ownerOnly = true;
@@ -136,7 +136,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'مطور_عام':
             if (!m.isOwner) {
-                result = '*❌ هذا الأمر للمطور فقط*';
+                result = '*🅇 هذا الأمر للمطور فقط*';
                 break;
             }
             global.db.ownerOnly = false;
@@ -145,7 +145,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'تشغيل_مضاد_الروابط':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].antiLink = true;
@@ -154,7 +154,7 @@ async function handler(m, { conn, command, args }) {
             
         case 'ايقاف_مضاد_الروابط':
             if (!m.isOwner && !m.isAdmin) {
-                result = '*❌ هذا الأمر للمشرفين فقط*';
+                result = '*🅇 هذا الأمر للمشرفين فقط*';
                 break;
             }
             global.db.groups[chatId].antiLink = false;
@@ -162,7 +162,7 @@ async function handler(m, { conn, command, args }) {
             break;
             case 'ايقاف_خاص':
             if (!m.isOwner) {
-                result = '*❌ هذا الأمر للمطورين فقط*';
+                result = '*🅇 هذا الأمر للمطورين فقط*';
                 break;
             }
             global.db.dev = true;
@@ -170,7 +170,7 @@ async function handler(m, { conn, command, args }) {
             break;
             case 'تشغيل_خاص':
             if (!m.isOwner) {
-                result = '*❌ هذا الأمر للمطورين فقط*';
+                result = '*🅇 هذا الأمر للمطورين فقط*';
                 break;
             }
             global.db.dev = false;

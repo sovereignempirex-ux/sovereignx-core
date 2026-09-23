@@ -1,11 +1,11 @@
 const insta = async (m, { text, Api, conn }) => {
-  if (!text) return m.reply("❌: حط الرابط جنب الامر");
+  if (!text) return m.reply("🅇: حط الرابط جنب الامر");
   
   const { status, data } = await Api.download.instagram ({ url: text })
   
   try {
     if (status !== 'success') {
-      return m.react("❌");
+      return m.react("🅇");
     }
 
     if (Array.isArray(data)) {
@@ -33,7 +33,7 @@ const insta = async (m, { text, Api, conn }) => {
           caption: "```📥 Instagram video downloaded successfully```"
         });
       } else {
-        m.reply("❌ No video found in this Instagram post");
+        m.reply("🅇 No video found in this Instagram post");
       }
     }
   } catch (error) {

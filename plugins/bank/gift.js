@@ -40,7 +40,7 @@ const handler = async (m, { conn, command }) => {
     if (lastClaim && (now - lastClaim) < reward.cooldown) {
         const remaining = getTimeRemaining(lastClaim, reward.cooldown);
         const timeLeft = formatTime(remaining);
-        await m.reply(`*❌ انتظـر ${timeLeft} لاستلام الهدية ${reward.name}*`);
+        await m.reply(`*🅇 انتظـر ${timeLeft} لاستلام الهدية ${reward.name}*`);
         return;
     }
     
@@ -71,8 +71,8 @@ const handler = async (m, { conn, command }) => {
             isForwarded: true,
             forwardingScore: 1,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363409792989178@newsletter',
-                newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+                newsletterJid: '120363412381946365@newsletter',
+                newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
                 serverMessageId: 0
             }
         }

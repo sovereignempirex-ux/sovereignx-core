@@ -1,5 +1,5 @@
 let handler = async (m, { conn, bot }) => {
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
 
   // ─── الـ Quoted Message (الواترمارك اللي فوق) ───
   let quoted = {

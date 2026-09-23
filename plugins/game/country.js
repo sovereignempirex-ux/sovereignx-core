@@ -52,7 +52,7 @@ handler.before = async (m, { conn }) => {
         return true;
     }
     
-    await m.reply("*❌ إجابة غلط رد جرب تاني*");
+    await m.reply("*🅇 إجابة غلط رد جرب تاني*");
     return true;
 };
 

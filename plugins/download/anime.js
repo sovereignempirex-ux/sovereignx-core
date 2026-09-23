@@ -28,8 +28,8 @@ let handler = async (m, { conn, text, command }) => {
       ], 
       mentions: [m.sender],
       newsletter: {
-        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-        jid: '120363409792989178@newsletter'
+        name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+        jid: '120363412381946365@newsletter'
       },
     }, m)
   }
@@ -61,8 +61,8 @@ let handler = async (m, { conn, text, command }) => {
       ],
       mentions: [m.sender],
       newsletter: {
-        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-        jid: '120363409792989178@newsletter'
+        name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+        jid: '120363412381946365@newsletter'
       },
     }, m)
   }
@@ -97,8 +97,8 @@ let handler = async (m, { conn, text, command }) => {
       ],
       mentions: [m.sender],
       newsletter: {
-        name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-        jid: '120363409792989178@newsletter'
+        name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+        jid: '120363412381946365@newsletter'
       },
     }, m)
   }
@@ -118,8 +118,8 @@ let handler = async (m, { conn, text, command }) => {
   ], 
   mentions: [m.sender],
   newsletter: {
-      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-      jid: '120363409792989178@newsletter'
+      name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      jid: '120363412381946365@newsletter'
     },
 }, m)
   }

@@ -93,7 +93,7 @@ const handler = async (m, { conn, bot, command }) => {
         }
         
         if (!filePath || !fs.existsSync(filePath)) {
-            return m.reply(`❌ \`${target}.js\`\n└─ غير موجود`);
+            return m.reply(`🅇 \`${target}.js\`\n└─ غير موجود`);
         }
         
         fs.unlinkSync(filePath);

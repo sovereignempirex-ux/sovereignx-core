@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: '120363412381946365@newsletter',
         newsletterName: '𝑴𝑬𝑫𝑶 ~ 𝑻𝒉𝒆 𝑮𝒆𝒏𝒊𝒖𝒔 ❤️🧠',
         serverMessageId: 0
     },
@@ -44,7 +44,7 @@ const context = (jid, img) => ({
         title: "𝑴𝑬𝑫𝑶 ❤️🧠 | 𝑳𝒐𝒗𝒆 & 𝑰𝒏𝒕𝒆𝒍𝒍𝒊𝒈𝒆𝒏𝒄𝒆",
         body: "𝑻𝒉𝒊𝒏𝒌𝒊𝒏𝒈 ~ ☆ 𝑪𝒂𝒓𝒊𝒏𝒈 ~ ☆ 𝑮𝒆𝒏𝒊𝒖𝒔 (⁠｡⁠✧⁠ω⁠✧⁠｡⁠)",
         thumbnailUrl: img,
-        sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
     }

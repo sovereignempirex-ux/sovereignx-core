@@ -8,7 +8,7 @@ const handler = async (m, { conn }) => {
     p => p.id === targetLid || p.phoneNumber === targetJid
   );
 
-  if (!user) return m.reply("❌ المستخدم غير موجود في الجروب");
+  if (!user) return m.reply("🅇 المستخدم غير موجود في الجروب");
 
   db.groups[m.chat] ??= {};
   db.groups[m.chat].warnings ??= {};

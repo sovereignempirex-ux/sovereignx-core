@@ -1,54 +1,58 @@
-import { createRequire } from 'module';
+/* ========== JavaScript Evaluator - 𝑺𝒶𝓁𝑒𝓋𝑒𝓇 Style ========== */
+import syntaxerror from 'syntax-error';
 import { format } from 'util';
+import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { getCalmResponse } from "../../system/utils.js";
 
-export default {
-  command: [">", "=>"],
-  description: "Code to test the rest of the codes",
-  category: "owner",
-  usage: [">", "=>"],
-  usePrefix: false,
-  owner: true,
-  async execute(m, { bot, conn }) {
-    const body = m.text || '';
-    const codeText = body.replace(/^(>|=>)\s*/, '').trim();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const require = createRequire(__dirname);
 
-    if (!codeText) return m.reply('ex: => m');
+class CustomArray extends Array {
+  constructor(...args) {
+    if (typeof args[0] === 'number') return super(Math.min(args[0], 10000));
+    return super(...args);
+  }
+}
 
-    try {
-      const require = createRequire(import.meta.url);
-      const AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
+const test = async (m, { conn, args, usedPrefix, noPrefix, isOwner }) => {
+  if (!isOwner) return;
 
-      const vars = {
-        conn,
-        bot,
-        m,
-        reply: m.reply.bind(m),
-        print: (...args) => m.reply(format(...args)),
-        require,
-        process,
-        Array: CustomArray
-      };
+  const name = conn.getName?.(m.sender) || 'Owner';
+  let _return;
+  let _syntax = '';
+  
+  const _text = (/^=/.test(usedPrefix) ? 'return ' : '') + noPrefix;
 
-      let processedCode = body.startsWith('=>') ? `return (${codeText})` : codeText;
-
-      const executeCode = new AsyncFunction(...Object.keys(vars), processedCode);
-      let result = await executeCode(...Object.values(vars));
-
-      if (result !== undefined) {
-        await m.reply(format(result));
-      }
-    } catch (err) {
-      await m.reply(`${err.message || err.stack || err}`);
+  try {
+    let i = 15;
+    const f = { exports: {} };
+    const exec = new (async () => {}).constructor(
+      'print', 'm', 'handler', 'require', 'conn', 'Array', 'process', 'args', 'groupMetadata', 'module', 'exports', 'argument', _text
+    );
+    _return = await exec.call(conn, (...args) => {
+      if (--i < 1) return;
+      console.log(...args);
+      return m.reply(format(...args));
+    }, m, test, require, conn, CustomArray, process, args, m.groupMetadata, f, f.exports, [conn, { conn, usedPrefix, noPrefix, args, groupMetadata: m.groupMetadata }]);
+  } catch (e) {
+    const err = syntaxerror(_text, 'Execution Function', { allowReturnOutsideFunction: true, allowAwaitOutsideFunction: true, sourceType: 'module' });
+    if (err) _syntax = '```' + err + '```\n\n';
+    _return = e;
+  } finally {
+    const output = _syntax + format(_return);
+    if (output.length > 4096) {
+      const fileName = `eval_${Date.now()}.txt`;
+      await conn.sendMessage(m.chat, { document: Buffer.from(output), fileName, mimetype: 'text/plain' }, { quoted: m });
+    } else {
+      await m.reply(output);
     }
   }
 };
 
-class CustomArray extends Array {
-  constructor(...args) {
-    if (args.length === 1 && typeof args[0] === 'number') {
-      super(Math.min(args[0], 10000));
-    } else {
-      super(...args);
-    }
-  }
-}
+test.customPrefix = /=?>|~/;
+test.command = /(?:)/i;
+test.category = "owner";
+test.usage = ["> <code>", "=> <code>"];
+export default test;

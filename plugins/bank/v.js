@@ -13,11 +13,11 @@ const handler = async (m, { conn, command, text }) => {
         const [name, age] = text.split('|').map(s => s.trim());
         
         if (!name || !age) {
-            return m.reply(`*❌ خطأ:* يجب كتابة الاسم والعمر مفصولين بـ |\n\nمثال:\nتسجيل ڤينوم|20`);
+            return m.reply(`*🅇 خطأ:* يجب كتابة الاسم والعمر مفصولين بـ |\n\nمثال:\nتسجيل ڤينوم|20`);
         }
         
         if (isNaN(age) || age < 1 || age > 30) {
-            return m.reply(`*❌ خطأ:* العمر يجب أن يكون رقماً بين 1 و 30`);
+            return m.reply(`*🅇 خطأ:* العمر يجب أن يكون رقماً بين 1 و 30`);
         }
         
         user.name = name;
@@ -45,12 +45,12 @@ const handler = async (m, { conn, command, text }) => {
                 isForwarded: true,
                 forwardingScore: 1,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363409792989178@newsletter',
-                    newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+                    newsletterJid: '120363412381946365@newsletter',
+                    newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 🍻 | الـسـيـرك الـرقـمـي",
+                    title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🍻 | الـسـيـرك الـرقـمـي",
                     body: "تـسـجـيـل جـديـد فـي الـسـيـرك",
                     thumbnailUrl: profilePic,
                     sourceUrl: '',
@@ -63,7 +63,7 @@ const handler = async (m, { conn, command, text }) => {
     
     else if (command === "حذف_تسجيلي") {
         if (!user.name && !user.age) {
-            return m.reply(`*❌ ليس لديك تسجيل لحذفه*\n\nاكتب .تسجيل اسم|عمر للتسجيل`);
+            return m.reply(`*🅇 ليس لديك تسجيل لحذفه*\n\nاكتب .تسجيل اسم|عمر للتسجيل`);
         }
         
         delete user.name;
@@ -90,12 +90,12 @@ const handler = async (m, { conn, command, text }) => {
                 isForwarded: true,
                 forwardingScore: 1,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363409792989178@newsletter',
-                    newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+                    newsletterJid: '120363412381946365@newsletter',
+                    newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 🍻 | الـسـيـرك الـرقـمـي",
+                    title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🍻 | الـسـيـرك الـرقـمـي",
                     body: "تـم حـذف الـتـسـجـيـل",
                     thumbnailUrl: profilePic,
                     sourceUrl: '',

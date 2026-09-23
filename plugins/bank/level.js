@@ -74,12 +74,12 @@ export default async function before(m, { conn }) {
                 isForwarded: true,
                 forwardingScore: 1,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363409792989178@newsletter',
-                    newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+                    newsletterJid: '120363412381946365@newsletter',
+                    newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | السيرك الرقمي",
+                    title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🎪 | السيرك الرقمي",
                     body: "تـرقـيـة فـي الـسـيـرك",
                     thumbnailUrl: "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
                     sourceUrl: '',

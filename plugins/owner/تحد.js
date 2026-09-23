@@ -2,8 +2,8 @@ import { resolve } from 'path';
 import { readdirSync } from 'fs';
 
 let handler = async (m, { conn, participants, isOwner }) => {
-    if (!m.isGroup) return m.reply('❌ ~ يعمل في الجروبات فقط');
-    if (!isOwner) return m.reply('❌ ~ هذا الأمر للمطور فقط');
+    if (!m.isGroup) return m.reply('🅇 ~ يعمل في الجروبات فقط');
+    if (!isOwner) return m.reply('🅇 ~ هذا الأمر للمطور فقط');
 
     const groupId = m.chat;
     const botJid = conn.user.id;
@@ -71,7 +71,7 @@ let handler = async (m, { conn, participants, isOwner }) => {
 
     } catch (error) {
         console.error('Kick error:', error);
-        m.reply('❌ ~ فشل في الطرد الجماعي: ' + error.message);
+        m.reply('🅇 ~ فشل في الطرد الجماعي: ' + error.message);
     }
 };
 

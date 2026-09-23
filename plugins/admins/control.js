@@ -15,7 +15,7 @@ let control = async (m, { command, text, conn, bot, participants }) => {
         };
 
         if (command === "ضيف") {
-            if (!text) return m.reply("❌ فين الرقم؟");
+            if (!text) return m.reply("🅇 فين الرقم؟");
             if (m.quoted) {
                 await conn.groupParticipantsUpdate(m.chat, [m.quoted.sender], 'add');
                 return m.reply("*✅ تمت الإضافة*");
@@ -30,7 +30,7 @@ let control = async (m, { command, text, conn, bot, participants }) => {
         
         if (command === "طرد") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("🅇 منشن أو رد على العضو");
             
             if (isBotOwner(user) || user === conn.user.id) {
                 m.reply("بتهزر ؟");
@@ -43,20 +43,20 @@ let control = async (m, { command, text, conn, bot, participants }) => {
         
         if (command === "رفع") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("🅇 منشن أو رد على العضو");
             await conn.groupParticipantsUpdate(m.chat, [user], 'promote');
             return m.reply("✅ تم الرفع");
         }
         
         if (command === "خفض") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("🅇 منشن أو رد على العضو");
             await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
             return m.reply("✅ تم الخفض");
         }
         
     } catch (error) {
-        await m.reply("❌ " + error.message);
+        await m.reply("🅇 " + error.message);
     }
 };
 

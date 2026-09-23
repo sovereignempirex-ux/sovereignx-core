@@ -1,15 +1,15 @@
 let handler = async (m, { conn }) => {
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
 
   // ─── التحقق من المجموعة ───
   if (!m.isGroup) return conn.sendMessage(m.chat, {
-    text: `❌ ┃ الأمر ده للمجموعات بس.`,
+    text: `🅇 ┃ الأمر ده للمجموعات بس.`,
     contextInfo: {
       externalAdReply: {
         title: '𝑺𝑯𝑨𝑫𝑶𝑾 𝑮𝑨𝑹𝑫𝑬𝑵 🌑',
         body: watermark,
         thumbnailUrl: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-        sourceUrl: 'https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         mediaType: 1,
         renderLargerThumbnail: true
       }
@@ -41,15 +41,15 @@ let handler = async (m, { conn }) => {
       forwardingScore: 999,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
-        newsletterJid: `120363409792989178@newsletter`,
-        newsletterName: `𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿`,
+        newsletterJid: `120363412381946365@newsletter`,
+        newsletterName: `𝑺𝒂𝒍𝒆𝒗𝒆𝒓`,
         serverMessageId: 0
       },
       externalAdReply: {
         title: `⚔️ 𝑺𝑯𝑨𝑫𝑶𝑾 𝑨𝑹𝑴𝒀`,
         body: `𝑹𝒊𝒔𝒆 𝒂𝒏𝒅 𝑫𝒆𝒇𝒆𝒏𝒅`,
         thumbnailUrl: `https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg`,
-        sourceUrl: `https://whatsapp.com/channel/0029VbDCNPF1yT2DEJ557V0H`,
+        sourceUrl: `https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K`,
         mediaType: 1,
         renderLargerThumbnail: true
       }

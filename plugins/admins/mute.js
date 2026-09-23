@@ -16,8 +16,8 @@ const handler = async (m, { conn, command, bot }) => {
     }
     
     if (!target) return m.reply(`*🔇 كتم/فك_كتم @user*\nاو رد على رسالته`);
-    if (typeof target !== 'string') return m.reply(`*❌ حدث خطأ في تحديد المستخدم*`);
-    if (isOwner(target, bot)) return m.reply(`*❌ لا يمكن كتم المطور*`);
+    if (typeof target !== 'string') return m.reply(`*🅇 حدث خطأ في تحديد المستخدم*`);
+    if (isOwner(target, bot)) return m.reply(`*🅇 لا يمكن كتم المطور*`);
     
     const group = global.db.groups[m.chat] ||= {};
     const muteList = group.mute ||= [];
@@ -32,14 +32,14 @@ const handler = async (m, { conn, command, bot }) => {
     
     if (command === "كتم") {
         if (isMuted) {
-            await conn.sendMessage(m.chat, { text: `*❌ @${target.split('@')[0]} مكتوم*`, mentions: [target] });
+            await conn.sendMessage(m.chat, { text: `*🅇 @${target.split('@')[0]} مكتوم*`, mentions: [target] });
             return;
         }
         muteList.push(target);
         await conn.sendMessage(m.chat, { text: `*✅ تم كتم @${target.split('@')[0]}*\n🔒 لن يتمكن من الكلام`, mentions: [target] });
     } else if (command === "فك_كتم") {
         if (!isMuted) {
-            await conn.sendMessage(m.chat, { text: `*❌ @${target.split('@')[0]} ليس مكتوماً*`, mentions: [target] });
+            await conn.sendMessage(m.chat, { text: `*🅇 @${target.split('@')[0]} ليس مكتوماً*`, mentions: [target] });
             return;
         }
         let newList = [];

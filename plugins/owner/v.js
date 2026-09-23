@@ -3,11 +3,11 @@ import path from 'path';
 
 const handler = async (m, { conn, bot, text, command }) => {
     try {
-        if (!m.isOwner) return m.reply('❌ هذا الأمر مخصص للمطور فقط.');
+        if (!m.isOwner) return m.reply('🅇 هذا الأمر مخصص للمطور فقط.');
 
         if (!text) return m.reply(
 `_🕸 طريقه الاستخدام_ — *.${command} اسم_الملف*
-> مثال : .${command} menu`
+> مثال : .${command} menu`);
 
         const base = bot.config?.commandsPath || './plugins';
         const targetName = text.trim().replace(/\.js$/, '');
@@ -36,7 +36,7 @@ const handler = async (m, { conn, bot, text, command }) => {
         const filePath = findFile(targetName);
 
         if (!filePath || !fs.existsSync(filePath)) {
-            return m.reply(`❌ لم يتم العثور على ملف: ${targetName}.js`);
+            return m.reply(`🅇 لم يتم العثور على ملف: ${targetName}.js`);
         }
 
         const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -65,7 +65,7 @@ const handler = async (m, { conn, bot, text, command }) => {
         ]);
 
     } catch (error) {
-        return m.reply("❌ " + error.message);
+        return m.reply("🅇 " + error.message);
     }
 };
 

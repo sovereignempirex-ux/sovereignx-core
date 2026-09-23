@@ -1,6 +1,7 @@
-/* 
-by: VA ~ VENOM
+/*
+by: 𝑺𝒶𝓁𝑒𝓋𝑒𝓇
 */
+import { OWNER_JIDS } from "../../system/config.js";
 
 const example = async (m, { conn }) => {
 
@@ -8,13 +9,13 @@ conn.msgUrl(m.chat,
   '*🔥 Special Offer*',
   {
     img: 'https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg',
-    title: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+    title: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
     body: 'Limited time',
     big: true,
-    mentions: ['201283073813@s.whatsapp.net', '97431298191@s.whatsapp.net'],
+    mentions: OWNER_JIDS,
     newsletter: {
-      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-      jid: '120363409792989178@newsletter'
+      name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      jid: '120363412381946365@newsletter'
     }
   },
   m

@@ -25,7 +25,7 @@ const ff = async (m, { conn, text, command }) => {
                 mentions: [target] 
             });
         } else {
-            m.reply(`*❌ ~هذا المستخدم ليس محظوراً*`);
+            m.reply(`*🅇 ~هذا المستخدم ليس محظوراً*`);
         }
         return;
     }

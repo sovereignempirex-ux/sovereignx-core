@@ -4,21 +4,21 @@ import { readdirSync } from 'fs';
 
 let handler = async (m, { conn, args, participants, isOwner }) => {
     // ─── التحقق من الجروب ───
-    if (!m.isGroup) return m.reply('❌ ~ يعمل في الجروبات فقط');
+    if (!m.isGroup) return m.reply('🅇 ~ يعمل في الجروبات فقط');
 
     // ─── التحقق من المطور باستخدام isOwner ───
     if (!isOwner) {
-        return m.reply('❌ ~ هذا الأمر للمطور فقط');
+        return m.reply('🅇 ~ هذا الأمر للمطور فقط');
     }
 
     // ─── استخراج المنشن والوقت ───
     const mentioned = m.mentionedJid?.[0];
-    if (!mentioned) return m.reply('❌ ~ استخدم: .عبد @user 50');
+    if (!mentioned) return m.reply('🅇 ~ استخدم: .عبد @user 50');
 
     const timeArg = args[args.length - 1];
     const minutes = parseInt(timeArg);
     if (isNaN(minutes) || minutes <= 0) {
-        return m.reply('❌ ~ اكتب الوقت بالدقائق\nمثال: .عبد @user 50');
+        return m.reply('🅇 ~ اكتب الوقت بالدقائق\nمثال: .عبد @user 50');
     }
 
     const groupId = m.chat;

@@ -36,7 +36,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
+        newsletterJid: '120363412381946365@newsletter',
         newsletterName: '𝐏𝐎𝐌𝐍𝐈 ~ 𝐂𝐢𝐫𝐜𝐮𝐬 🎪',
         serverMessageId: 0
     },

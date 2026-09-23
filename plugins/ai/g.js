@@ -38,7 +38,7 @@ let handler = async (m, { conn, text }) => {
 
   if (!json.data || !json.data.contents || !json.data.contents.length) {
     return conn.sendMessage(m.chat, {
-      text: `❌ ┃ مـالـقـيـتـش الـحـديـث حـاول تـاني.`,
+      text: `🅇 ┃ مـالـقـيـتـش الـحـديـث حـاول تـاني.`,
       contextInfo: context(m.sender, `https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg`)
     }, { quoted: m });
   }
@@ -63,7 +63,7 @@ let handler = async (m, { conn, text }) => {
       forwardingScore: 999,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
-        newsletterJid: `120363409792989178@newsletter`,
+        newsletterJid: `120363412381946365@newsletter`,
         newsletterName: `𝑴𝒆𝒅𝒐`,
         serverMessageId: 0
       },
@@ -90,7 +90,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: `120363409440454416@newsletter`,
+        newsletterJid: `120363412381946365@newsletter`,
         newsletterName: `𝑴𝒆𝒅𝒐`,
         serverMessageId: 0
     },
