@@ -14,8 +14,8 @@ const handler = async (m, { conn }) => {
     title: "𝐒𝐩𝐞𝐞𝐝 / 𝐓𝐞𝐬𝐭",
     body: "𝐓𝐞𝐬𝐭𝐢𝐧𝐠 𝐭𝐡𝐞 𝐛𝐨𝐭'𝐬 𝐬𝐩𝐞𝐞𝐝: 𝐈𝐬 𝐢𝐭 𝐟𝐚𝐬𝐭 𝐨𝐫 𝐧𝐨𝐭?",
     newsletter: {
-      name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-      jid: '120363409792989178@newsletter'
+      name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      jid: '120363412381946365@newsletter'
     },
     big: false,
     mentions: [m.sender]

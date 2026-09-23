@@ -1,118 +1,94 @@
-import axios from "axios";
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
 
+const tmpDir = path.join(process.cwd(), "tmp");
+if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
+
+/* ========== Create Moving X Animation ========== */
+const createMovingX = async (label = "𝑺𝒂𝒍𝒆𝒗𝒆𝒓", size = 720) => {
+  const frames = Array.from({ length: 8 }, (_, index) => {
+    const angle = index % 2 === 0 ? -10 : 10;
+    const glowColor = index % 2 === 0 ? "#ff3b81" : "#35e0ff";
+    const bgColor = "#080b18";
+    
+    return `
+      <svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="${bgColor}"/>
+        <circle cx="${size / 2}" cy="${size / 2 + 10}" r="${size / 2.8}" fill="none" stroke="#202b4d" stroke-width="2"/>
+        <g transform="rotate(${angle} ${size / 2} ${size / 2 - 10})">
+          <path d="M${size * 0.26} ${size * 0.23} L${size * 0.44} ${size * 0.23} L${size * 0.66} ${size * 0.77} L${size * 0.53} ${size * 0.77} Z" fill="${glowColor}"/>
+          <path d="M${size * 0.66} ${size * 0.23} L${size * 0.53} ${size * 0.23} L${size * 0.26} ${size * 0.77} L${size * 0.44} ${size * 0.77} Z" fill="#f4f7ff"/>
+        </g>
+        <text x="${size / 2}" y="${size * 0.82}" text-anchor="middle" fill="#f4f7ff" font-family="Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="5">${label}</text>
+        <text x="${size / 2}" y="${size * 0.87}" text-anchor="middle" fill="#8491b5" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">𝑺𝒂𝒍𝒆𝒗𝒆𝒓</text>
+      </svg>
+    `;
+  });
+
+  const rendered = await Promise.all(frames.map((frame) => 
+    sharp(Buffer.from(frame))
+      .png()
+      .toBuffer()
+  ));
+
+  const combined = sharp(Buffer.concat(rendered), {
+    pageHeight: size,
+    pages: rendered.length
+  })
+    .webp({
+      effort: 4,
+      loop: 0,
+      delay: 120
+    })
+    .toBuffer();
+
+  return combined;
+};
+
+/* ========== Create X Logo (Static) ========== */
+const createXLogo = async (text = "X") => {
+  const size = 200;
+  const svg = `
+    <svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="#0d1117"/>
+      <path d="M${size * 0.1} ${size * 0.9} L${size * 0.9} ${size * 0.1}" stroke="#ff3b81" stroke-width="${size * 0.04}" fill="none"/>
+      <path d="M${size * 0.9} ${size * 0.9} L${size * 0.1} ${size * 0.1}" stroke="#35e0ff" stroke-width="${size * 0.04}" fill="none"/>
+      <text x="${size / 2}" y="${size * 0.55}" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="${size * 0.25}" font-weight="bold">${text}</text>
+    </svg>
+  `;
+  
+  return sharp(Buffer.from(svg))
+    .png()
+    .toBuffer();
+};
+
+/* ========== Handler for Logo Commands ========== */
 let handler = async (m, { conn, text, command }) => {
-  if (!text) return m.reply(`🍭 مثال:\n.${command} venom`);
-
-  let effect = "";
-
-  switch (command) {
-    case "عميق":
-      effect = "deepsea";
-      break;
-    case "رعب":
-      effect = "horror";
-      break;
-    case "بينك":
-      effect = "pink";
-      break;
-    case "حلوى":
-      effect = "candy";
-      break;
-    case "كريسماس":
-      effect = "christmas";
-      break;
-    case "فاخر":
-      effect = "luxury";
-      break;
-    case "سماء":
-      effect = "sky";
-      break;
-    case "حديد":
-      effect = "steel";
-      break;
-    case "صمغ":
-      effect = "glue";
-      break;
-    case "قماش":
-      effect = "fabric";
-      break;
-    case "ترانسفورمر":
-      effect = "transformer";
-      break;
-    case "سام":
-      effect = "toxic";
-      break;
-    case "قديم":
-      effect = "ancient";
-      break;
-    case "رعد":
-      effect = "thunder";
-      break;
-    case "قوسقزح":
-      effect = "graphy";
-      break;
-    case "نيون":
-      effect = "neon";
-      break;
-    case "ثلج":
-      effect = "frozen";
-      break;
-    case "لوجو_ناروتو":
-      effect = "naruto";
-      break;
-    case "لوجو_بوكيمون":
-      effect = "pokemon";
-      break;
-    case "لوجو_باتمان":
-      effect = "batman";
-      break;
-    case "منقوش":
-      effect = "engraved";
-      break;
-    default:
-      return m.reply("❌ أمر غير معروف");
-  }
+  if (!text) return m.reply(`مثال: .${command} vente 🌿`);
 
   try {
-    const { Scrapy } = await import("meowsab");
-    const { data } = await Scrapy.TextPro({ name: effect, text: text });
-
-    let config = {
-      method: "GET",
-      url: data.image,
-      responseType: "arraybuffer",
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.179 Safari/537.36",
-        Accept:
-          "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "Accept-Encoding": "gzip, deflate, br, zstd",
-        "cache-control": "max-age=0",
-        "sec-ch-ua":
-          '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": '"Windows"',
-        "upgrade-insecure-requests": "1",
-        dnt: "1",
-        "sec-fetch-site": "none",
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-user": "?1",
-        "sec-fetch-dest": "document",
-        "accept-language": "ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7",
-        priority: "u=0, i",
-      },
-    };
-
-    const response = await axios.request(config);
+    const image = await createMovingX(text.trim());
     await conn.sendMessage(m.chat, {
-      image: Buffer.from(response.data),
-      caption: `✅ done — *(${text})*`,
+      image,
+      mimetype: "image/webp",
+      caption: `𝑺𝒶𝓁𝑒𝓋𝑒𝓇 | ${text.trim()} ✨`,
     }, { quoted: global.reply_status });
   } catch (error) {
-    m.reply(error.message);
+    try {
+      const logo = await createXLogo(text.trim());
+      await conn.sendMessage(m.chat, {
+        image: logo,
+        mimetype: "image/png",
+        caption: `𝑺𝒶𝓁𝑒𝓋𝑒𝓇 | ${text.trim()} ✨`,
+      }, { quoted: global.reply_status });
+    } catch (fallbackError) {
+      m.reply(`تعذر إنشاء الشعار 🌿\n${fallbackError.message}`);
+    }
   }
 };
 
+/* ========== Available Logo Themes ========== */
 const logos = [
   "عميق",
   "رعب",
@@ -133,7 +109,7 @@ const logos = [
   "ثلج",
   "لوجو_ناروتو",
   "لوجو_بوكيمون",
-  "لوجو_باتمان",
+  "لوجو_اكس",
   "منقوش",
 ];
 

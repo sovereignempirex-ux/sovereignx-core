@@ -53,9 +53,9 @@ const handler = async (m, { conn, bot, config }) => {
 
 ——> *الـمـالـكـيـن 👑*
 - *العدد:* \`${bot.owners?.length || 0}\`
-- *الرئيسي:* \`${bot.owners?.[0]?.name || '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿'} (${bot.owners?.[0]?.jid?.split('@')[0] || 'لا يوجد'})\`
+- *الرئيسي:* \`${bot.owners?.[0]?.name || 'svcp'} (${bot.owners?.[0]?.jid?.split('@')[0] || 'لا يوجد'})\`
 
-> *_VII7 BOT SYSTEM_*`;
+> *_𝑺𝒂𝒍𝒆𝒗𝒆𝒓 BOT SYSTEM_*`;
 
   await conn.sendMessage(m.chat, {
     text: msg,
@@ -72,12 +72,12 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
-        newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+        newsletterJid: '120363412381946365@newsletter',
+        newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
         serverMessageId: 0
     },
     externalAdReply: {
-        title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
+        title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🎪 | بوت واتساب مبنى على إطار 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
         body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
         thumbnailUrl: img,
         sourceUrl: '',
