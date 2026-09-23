@@ -1,9 +1,9 @@
 let handler = async (m, { conn, bot }) => {
-  let watermark = '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿';
+  let watermark = '𝑺𝒂𝒍𝒆𝒗𝒆𝒓';
   
   let quoted = {
     key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' },
-    message: { conversation: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿' }
+    message: { conversation: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓' }
   };
   const num = bot.config.owners[0].jid.split("@")[0];
   let vcard = `BEGIN:VCARD
@@ -21,7 +21,7 @@ END:VCARD`;
       externalAdReply: {
         title: '𝑇𝛨𝛯 𝛩𝑊𝛮𝛯𝑅',
         body: watermark,
-        sourceUrl: 'https://whatsapp.com/channel/0029Vb82Y93GehEEid2Xap23',
+        sourceUrl: 'https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K',
         thumbnailUrl: img,
         mediaType: 1,
         showAdAttribution: false,

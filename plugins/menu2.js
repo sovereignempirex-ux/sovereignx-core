@@ -31,12 +31,12 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363409792989178@newsletter',
-        newsletterName: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
+        newsletterJid: '120363412381946365@newsletter',
+        newsletterName: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
         serverMessageId: 0
     },
     externalAdReply: {
-        title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
+        title: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓 🎪 | بوت واتساب مبنى على إطار 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
         body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
         thumbnailUrl: img,
         sourceUrl: '',
@@ -89,8 +89,8 @@ const uptimeFormatted = `${String(hours).padStart(2, '0')}:${String(minutes).pad
             }],
             mentions: [m.sender],
             newsletter: {
-                name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-                jid: '120363409792989178@newsletter'
+                name: '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+                jid: '120363412381946365@newsletter'
             }
         }, global.reply_status);
         return;
@@ -98,7 +98,7 @@ const uptimeFormatted = `${String(hours).padStart(2, '0')}:${String(minutes).pad
 
     const cat = getCat(selected);
     if (!cat) {
-        await conn.sendMessage(m.chat, { text: '*❌ اختار رقم صحيح من 1 لـ 15*', contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
+        await conn.sendMessage(m.chat, { text: '*🅇 اختار رقم صحيح من 1 لـ 15*', contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
         return;
     }
 
@@ -106,7 +106,7 @@ const uptimeFormatted = `${String(hours).padStart(2, '0')}:${String(minutes).pad
     const categoryCmds = cmds.filter(c => c.category === cat[2]);
     
     if (!categoryCmds.length) {
-        await conn.sendMessage(m.chat, { text: '*❌ القسم فاضي*', contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
+        await conn.sendMessage(m.chat, { text: '*🅇 القسم فاضي*', contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
         return;
     }
 
@@ -120,7 +120,7 @@ const uptimeFormatted = `${String(hours).padStart(2, '0')}:${String(minutes).pad
 ${cmdsList}
 
 ╭─┈─┈─┈─⟞${cat[3]}⟝─┈─┈─┈─╮
-┃ *⌯︙𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿*
+┃ *⌯︙𝑺𝒂𝒍𝒆𝒗𝒆𝒓*
 ╰─┈─┈─┈─⟞${cat[3]}⟝─┈─┈─┈─╯
 > *رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا*`.trim(), contextInfo: context(m.sender, getImg(bot)) }, { quoted: m });
 }
