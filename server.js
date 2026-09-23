@@ -286,7 +286,7 @@ wss.on('connection', (ws, req) => {
 });
 
 server.listen(PORT, () => {
-   console.log(`🎮 𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿 Arena running on port ${PORT}`);
+   console.log(`🎮 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 Arena running on port ${PORT}`);
    console.log(`🌐 http://localhost:${PORT}`);
    console.log(`💾 Database: ${DB_PATH}`);
 });

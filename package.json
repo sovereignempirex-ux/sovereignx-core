@@ -1,29 +1,36 @@
 {
-  "name": "𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿",
+  "name": "𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
   "version": "8.0.9",
-  "description": "Simple WhatsApp bot, Modified by VENi - youssefv",
+  "description": "Simple WhatsApp bot, Modified by svcp",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["whatsapp-bot", "SOVEREIGN"],
-  "author": "VENi - youssefv",
+  "keywords": [
+    "whatsapp-bot",
+    "𝑺𝒂𝒍𝒆𝒗𝒆𝒓"
+  ],
+  "author": "svcp",
   "license": "MIT",
   "dependencies": {
-    "meowsab": "https://github.com/deveni0/ws/tarball/main",
-    "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main",
     "cheerio": "1.0.0-rc.12",
     "chokidar": "^5.0.0",
     "file-type": "^18.0.0",
     "form-data": "^4.0.5",
+    "meowsab": "file:./ws-main",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^3.3.2",
+    "pdfkit": "^0.20.2",
+    "qrcode": "^1.5.4",
     "qs": "*",
-    "wa-sticker-formatter": "^4.3.2"
+    "syntax-error": "^1.4.0",
+    "wa-sticker-formatter": "^4.3.2",
+    "yt-search": "^2.13.1"
   },
   "overrides": {
-    "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main",
     "*": {
-      "sharp": "https://github.com/deveni0/sharp-tmx/tarball/main"
+      "sharp": "file:./sharp-tmx-main"
     }
   }
 }

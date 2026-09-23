@@ -18,7 +18,7 @@ async function sub(client) {
   });
 
   global.subBots.on('error', (uid, error) => {
-    console.error(`❌ [SubBot ${uid}] Error:`, error?.message || error);
+    console.error(`🅇 [SubBot ${uid}] Error:`, error?.message || error);
   });
 
   const loadedCount = await global.subBots.load();
@@ -51,7 +51,7 @@ async function sub(client) {
       }
 
     } catch (error) {
-      console.error(`❌ [SubBot ${uid}] Send error:`, error?.message || error);
+      console.error(`🅇 [SubBot ${uid}] Send error:`, error?.message || error);
     }
   });
 
