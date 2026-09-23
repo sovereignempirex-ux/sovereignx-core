@@ -1,28 +1,46 @@
-import { exec } from "child_process";
+/* ========== System Utilities (Internal) ========== */
 import fs from "fs";
 import path from "path";
-import { promisify } from "util";
 import axios from "axios";
 import FormData from 'form-data';
 import { fileTypeFromBuffer } from "file-type";
-import { Sticker } from "wa-sticker-formatter";
-import cheerio from "cheerio";
 
-const execAsync = promisify(exec);
-const tmp = path.join(process.cwd(), "tmp");
+// Internal image processor module cache
+let imageProcessorModule = null;
 
-if (!fs.existsSync(tmp)) fs.mkdirSync(tmp, { recursive: true });
+/* ========== Initialize Image Processor ========== */
+export const initImageProcessor = async () => {
+  if (!imageProcessorModule) {
+    imageProcessorModule = await import('./image-processor.js');
+  }
+  return imageProcessorModule;
+};
 
-/* ========== Create Sticker ======== */
+/* ========== Create Sticker (Internal) ======== */
 
 const createSticker = async (buffer, options = {}) => {
-  const sticker = new Sticker(buffer, {
-    pack: options.pack || 'ڤـ ـ VA ـ ـا',
-    author: options.author || 'VA',
-    type: "full",
-    quality: options.mime === "image/jpg" ? 100 : 10
+  const proc = initImageProcessor();
+  const { pack, author, emoji } = options;
+  
+  // Use internal sharp-based sticker creation
+  const processed = await proc.processImage(buffer, {
+    type: 'resize',
+    width: 512,
+    height: 512,
+    quality: 90
   });
-  return sticker.build();
+  
+  // Create sticker with embedded metadata
+  const output = sharp(processed)
+    .png()
+    .embed({
+      pack: pack || '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      author: author || '𝑺𝒂𝒍𝒆𝒗𝒆𝒓',
+      emoji: emoji || '🅇'
+    })
+    .toBuffer();
+  
+  return output;
 };
 
 /* ========== GIF TO MP4 ========= */
@@ -46,7 +64,32 @@ async function gifToMp4(url) {
   return buffer;
 }
 
-/* =========== CatBox =========== */
+/* ========== X Asset Helper ========= */
+
+const getXAsset = async () => {
+  const procModule = await initImageProcessor();
+  const { createMovingXAsset } = procModule;
+  return await createMovingXAsset();
+};
+
+/* ========== Calm Response Helper ========== */
+const getCalmResponse = async (type) => {
+  try {
+    const { getCalmResponse: getResp } = await import('./config.js');
+    return getResp(type);
+  } catch (e) {
+    const fallbacks = {
+      error: "حدث خطأ بسيط 🌿\nجرّب مرة تانية لو سمحت",
+      permission: "الأمر ده للمطورين بس 🌿",
+      cooldown: "استنى شوية 🌿\nالبوت بياخد راحته",
+      notFound: "الأمر ده مش موجود 🌿\nاكتب .الاوامر تشوف المتاح",
+      thinking: "لحظة من فضلك... ✨"
+    };
+    return fallbacks[type] || "حصل خطأ بسيط 🌿";
+  }
+};
+
+/* ========== CatBox =========== */
 
 async function uploadToCatbox(buffer) {
   const { ext, mime } = await fileTypeFromBuffer(buffer);
@@ -59,16 +102,17 @@ async function uploadToCatbox(buffer) {
   return data.trim();
 }
 
-/* =========== AI =========== */
+/* ========== AI =========== */
 
 async function AiChat(options = {}) {
   const url = `https://text.pollinations.ai/${options.text}?model=${options.model || "openai"}`;
   return (await fetch(url)).text();
 }
 
-/* =========== Qu.ax Upload =========== */
+/* ========== Qu.ax Upload =========== */
 
 const extractFromHtml = (html, baseUrl) => {
+  const cheerio = require('cheerio');
   const $ = cheerio.load(html);
   const selectors = [
     'meta[property="og:image"]', 'meta[property="og:video"]', 'meta[property="og:audio"]',
@@ -102,8 +146,7 @@ const uploadToQuax = async (buffer) => {
   return extractFromHtml(pageHtml, mediaUrl) || mediaUrl;
 };
 
-
-/* =========== Termai.cc Upload =========== */
+/* ========== Termai.cc Upload =========== */
 
 async function uploadTmpfiles(buffer) {
     const { ext, mime } = await fileTypeFromBuffer(buffer);
@@ -119,11 +162,14 @@ async function uploadTmpfiles(buffer) {
     return res.data.path;
 }
 
+/* ========== Exports ========== */
 export { 
   uploadToCatbox, 
   uploadToQuax, 
   uploadTmpfiles, 
   createSticker, 
   AiChat, 
-  gifToMp4
- };
+  gifToMp4,
+  getXAsset,
+  getCalmResponse
+};

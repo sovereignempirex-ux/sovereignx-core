@@ -1,43 +1,72 @@
 import fs from "fs";
 import path from "path";
 
+/* ========== Calm Response Helper ========== */
+const getCalmResponse = async (type) => {
+  try {
+    const { getCalmResponse: getResp } = await import('./config.js');
+    return getResp(type);
+  } catch (e) {
+    const fallbacks = {
+      error: "حدث خطأ بسيط 🌿\nجرّب مرة تانية لو سمحت",
+      permission: "الأمر ده للمطورين بس 🌿",
+      cooldown: "استنى شوية 🌿\nالبوت بياخد راحته",
+      notFound: "الأمر ده مش موجود 🌿\nاكتب .الاوامر تشوف المتاح",
+      group: "الأمر ده بيشتغل بس ف الجروبات 🌿",
+      admin: "محتاج تكون ادمن ✨",
+      botAdmin: "حطني ادمن عشان أقدر أساعدك 🌿",
+      private: "الأمر ده في الخاص فقط 🍃"
+    };
+    return fallbacks[type] || "حصل خطأ بسيط 🌿";
+  }
+};
+
+/* ========== Get X Asset ========== */
+const getXAsset = async () => {
+  try {
+    const procModule = await import('./system/utils.js');
+    const { getXAsset: getX } = procModule;
+    return await getX();
+  } catch (e) {
+    return "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg";
+  }
+};
+
+/* ========== Group Events ========== */
 const group = async (ctx, event, eventType) => {
     try {
         if (!event?.participants) return null;
 
         const participants = event.participants.filter(p => p?.phoneNumber).map(p => p.phoneNumber);
         const author = event.author;
-        let txt;
 
         const users = participants.length 
-            ? participants.map(p => '@' + p.split('@')[0]).join(' and ') 
-            : 'No users';
-        const authorTag = author ? '@' + author.split('@')[0] : 'Unknown';
+            ? participants.map(p => '@' + p.split('@')[0]).join(' و ') 
+            : 'حد';
+        const authorTag = author ? '@' + author.split('@')[0] : 'حد';
 
         const messages = {
-            add: `♡゙ مـنـور/ه ${users}${authorTag === users ? "" : `\n𝐛𝐲 ${authorTag}`}`,
-            remove: `${users} تم إزالته من الجروب${authorTag === users ? "" : `\n𝐛𝐲 ${authorTag}`}`,
-            promote: `♡゙ مـبـروك الادمـن ${users}\nby ${authorTag}`,
-            demote: `♡゙ بـقـيـت عـضـو خـلاص ${users}\nby ${authorTag}`
+            add: `أهلاً ${users} 🌿\nانورتم الجروب ✨`,
+            remove: `${users} خرج من الجروب 🍃`,
+            promote: `مبارك ${users} 🌿\nبقى ادمن ✨`,
+            demote: `${users} بقي عضو عادي 🍃`
         };
 
-        txt = messages[eventType];
+        const txt = messages[eventType];
         if (!txt) return null;
         
-        if (global.db.groups[event.chat].noWelcome === true) return 9999;
+        if (global.db.groups[event.chat]?.noWelcome === true) return 9999;
 
-        const img = ["remove", "add"].includes(eventType) 
-            ? (event.userUrl || "https://files.catbox.moe/1be405.jpg") 
-            : "https://files.catbox.moe/1be405.jpg";
+        const img = await getXAsset();
 
         await ctx.sock.msgUrl(event.chat, txt, {
             img,
-            title: ctx.config?.info.nameBot || "WhatsApp Bot",
-            body: "𝐴 𝑠𝑖𝑚𝑝𝑙𝑒 𝑊𝒉𝑎𝑡𝑠𝐴𝑝𝑝 𝑏𝑜𝑡 𝑓𝑜𝑟 𝑏𝑒𝑔𝑖𝑛𝑛𝑒𝑟𝑠, 𝑏𝑦 𝑉𝐸𝑁𝑂𝑀",
+            title: ctx.config?.info.nameBot || "𝑺𝒶𝓁𝑒𝓋𝑒𝓇",
+            body: "بوت هادي وجميل • 𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
             mentions: author ? [author, ...participants] : participants,
             newsletter: {
-                name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-                jid: '120363409792989178@newsletter'
+                name: '𝑺𝒶𝓁𝑒𝓋𝑒𝓇',
+                jid: '120363412381946365@newsletter'
             },
             big: ["remove", "add"].includes(eventType)
         });
@@ -48,6 +77,7 @@ const group = async (ctx, event, eventType) => {
     return null;
 };
 
+/* ========== Access Control ========== */
 const access = async (msg, checkType, time) => {
     const conn = await msg.client();
     
@@ -67,25 +97,27 @@ const access = async (msg, checkType, time) => {
     };
     
     const messages = {
-        cooldown: `*♡⏳ استنى ${time || 'بعض كام ثانيه'} ثانية وكمل الأمر ⏳♡*\n⊱⋅ ──────────── ⋅⊰\n> *_لازم تصبر شويه عشان الأمر ده مينفعش فيه الاسبام_*`,
-        owner: `*♡ 🇩🇪 الأمر ده لـ المطورين فقط 🇩🇪♡*\n⊱⋅ ──────────── ⋅⊰\n> *_الامر ده لـ المطورين البوت لازم تكون مطور عشان تقدر تستخدمه_`,
-        group: `*♡💠 الأمر ده بيشتغل بس ف الجروبات 💠♡*\n⊱⋅ ──────────── ⋅⊰\n> *_لازم الأمر ده تستخدمه ف جروب فقط ممنوع غير كده_*`,
-        admin: `*♡📯 الأمر ده لـ الادمن فقط 📯♡*\n⊱⋅ ──────────── ⋅⊰\n> *_انت مجرد عضو لازم تبقي ادمن يا عضو يا عبد_*`,
-        private: `*♡🏷️ الأمر ده في الخاص فقط 🏷️♡*\n⊱⋅ ──────────── ⋅⊰\n> *_الامر ف الخاص بس ياحبيبي_*`,
-        botAdmin: `*♡📌 لازم اكون ادمن عشان انقذ الأمر 📌♡*\n⊱⋅ ──────────── ⋅⊰\n> *_حطني ادمن عشان تقدر تستعمل الأمر ده_*`,
-        noSub: `*♡🫒 الأمر ده ف البوت الأساسي فقط 🫒♡*\n⊱⋅ ──────────── ⋅⊰\n> *_ادخل الجروب ده و جرب الأمر [ https://chat.whatsapp.com/EFoA83bbdfd0bwhmqEDobv ] ياريت من غير سبام_*`,
-        disabled: `*♡🗃️ الامر متوقف (تحت صيانة) 🗃️♡*\n⊱⋅ ──────────── ⋅⊰\n> *_الامر تحت صيانه قريباً بيشتغل تاني_*`,
-        error: `*♡❌ الأمر فيه خطأ، كلم المطورين ❌♡*\n⊱⋅ ──────────── ⋅⊰\n*_اكتب " .المطور " عشان يبعتلك رقم المطور_*`
+        cooldown: async () => `⏳ ${await getCalmResponse('cooldown')}`,
+        owner: async () => `🔐 ${await getCalmResponse('permission')}`,
+        group: async () => `👥 ${await getCalmResponse('group')}`,
+        admin: async () => `👮 ${await getCalmResponse('admin')}`,
+        private: async () => `💬 ${await getCalmResponse('private')}`,
+        botAdmin: async () => `🤖 ${await getCalmResponse('botAdmin')}`,
+        noSub: async () => `🌿 الأمر ده في البوت الأساسي فقط\nقناة البوت: https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K`,
+        disabled: async () => `🔧 الأمر تحت الصيانة دلوقتي\nجرّب بعد شوية ✨`,
+        error: async () => `🅇 ${await getCalmResponse('error')}`
     };
     
-    if (conn && messages[checkType]) {
-        await conn.msgUrl(msg.chat, messages[checkType], {
-            img: "https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg",
-            title: "𝐀𝐥𝐞𝐫𝐭𝐬 | 𝐖𝐚𝐫𝐧𝐢𝐧𝐠𝐬",
-            body: "𝐵𝑜𝑡 𝑎𝑙𝑒𝑟𝑡𝑠: 𝑅𝑒𝑎𝑑 𝑡𝒉𝑒 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑡𝑜 𝑙𝑒𝑎𝑟𝑛 𝑚𝑜𝑟𝑒",
+    const messageFn = messages[checkType];
+    if (conn && messageFn) {
+        const messageText = await messageFn();
+        await conn.msgUrl(msg.chat, messageText, {
+            img: await getXAsset(),
+            title: "🅇 تنبيه 🅇",
+            body: "𝑺𝒂𝒍𝒆𝒗𝒆𝒓",
             newsletter: {
-                name: '𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵 𝑿',
-                jid: '120363409792989178@newsletter'
+                name: '𝑺𝒶𝓁𝑒𝓋𝑒𝓇',
+                jid: '120363412381946365@newsletter'
             },
             big: false
         }, quoted);
