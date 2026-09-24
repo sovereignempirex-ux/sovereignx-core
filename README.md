@@ -1,359 +1,159 @@
 <div align="center">
+<img src="[https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg](https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg)" alt="𝑺𝒂𝒍𝒆𝒗𝒆𝒓 Identity" width="160" style="border-radius: 4px;" />
+🅇 𝑺𝒂𝒍𝒆𝒗𝒆𝒓
+Sovereign WhatsApp Architecture.
 
-<img src="https://i.postimg.cc/vHQhQdyR/𝑺𝑶𝑽𝑬𝑹𝑬𝑰𝑮𝑵-𝑿.jpg" alt="𝑺𝒂𝒍𝒆𝒗𝒆𝒓" width="440" />
+A silver-themed, modular automation system engineered for AI, zero-dependency media processing, and extensible bot development.
+WhatsApp Channel
 
-<br />
-<br />
+NodeJS Requirement
 
-# 🅇 𝑺𝒂𝒍𝒆𝒗𝒆𝒓
+License
 
-**Silver-themed. Modular. Extensible.**
-
-A WhatsApp bot with its own identity, its own runtime,<br />
-and a plugin system built for AI, games, media, and tools.
-
-<br />
-
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-C0C0C0?style=flat-square&logo=node.js&logoColor=white&labelColor=0D1117)](https://nodejs.org)
-[![MeowSab](https://img.shields.io/badge/Runtime-MeowSab-C0C0C0?style=flat-square&labelColor=0D1117)](#embedded-core)
-[![Sharp](https://img.shields.io/badge/Media-Sharp-C0C0C0?style=flat-square&labelColor=0D1117)](#embedded-core)
-[![License](https://img.shields.io/badge/License-MIT-C0C0C0?style=flat-square&labelColor=0D1117)](LICENSE)
-[![Channel](https://img.shields.io/badge/WhatsApp-Channel-C0C0C0?style=flat-square&logo=whatsapp&logoColor=white&labelColor=0D1117)](https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K)
-
-<br />
-
-[Features](#features) · [Architecture](#architecture) · [Commands](#command-center) · [Install](#installation) · [Configure](#configuration) · [Develop](#development) · [Roadmap](#roadmap) · [Support](#support)
-
+Hosted By
+Philosophy ⟡ Architecture ⟡ Commands ⟡ Quick Start ⟡ Developer
 </div>
+⟡ PROJECT PHILOSOPHY
+𝑺𝒂𝒍𝒆𝒗𝒆𝒓 is not just a bot; it is a meticulously crafted runtime environment for WhatsApp. Built around the core aesthetics of Silver, Elegance, and Sovereignty, it rejects the chaotic structure of standard automation scripts.
+Instead of relying on fragile external dependencies, 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 integrates its essential frameworks directly into the core, ensuring maximum stability, security, and performance. Every interaction is designed to reflect a calm, premium identity via specialized response templates (getCalmResponse()) and the signature 🅇 motif.
+⟡ FEATURE ECOSYSTEM
+❖ Core Engine
+ * Embedded Framework: Built on a deeply modified, internal version of MeowSab.
+ * Zero-Dependency Media: Ships with its own sharp-tmx-main environment for image processing.
+ * Organized Telemetry: Clean, informative terminal banners displaying runtime states and versioning.
+❖ Interaction & UI
+ * Calm Templates: Pre-configured Arabic responses (🌿 ✨ 💚) for a serene user experience.
+ * Advanced Interfaces: Native flow support, catalogs, and interactive action buttons.
+ * Granular Control: Comprehensive group management, anti-link systems, and user authority mapping.
+❖ Artificial Intelligence
+ * Gemini 2.5 Flash: High-speed, context-aware conversational AI.
+ * Multi-Persona Matrix: Switchable AI personalities designed for different interaction models.
+❖ HTML Game Engine
+ * Browser-Based Execution: Games like Chess, Tic-Tac-Toe, and a Web Audio Piano are generated as interactive .html payloads, allowing users to play directly in their browsers.
+⟡ SYSTEM ARCHITECTURE
+𝑺𝒂𝒍𝒆𝒗𝒆𝒓 operates on a closed-loop architectural model. By keeping crucial libraries inside the workspace, it eliminates version conflicts and external API latency for media operations.
+graph TD
+    A[WhatsApp Network] <-->|Sockets| B(index.js)
+    B <--> C{Core Runtime}
+    
+    subgraph Internal Framework
+    E[ws-main / MeowSab]
+    F[sharp-tmx-main / Media]
+    end
+    
+    C --- E
+    C --- F
+    
+    C <--> D[system/control.js]
+    
+    subgraph Plugin System
+    G((plugins/))
+    G --> H[AI Module]
+    G --> I[Game Engine]
+    G --> J[Admin Tools]
+    end
 
----
-
-## About
-
-**Salever** is a modular WhatsApp bot built on Node.js. It runs on **MeowSab**, a framework embedded in the repository, and processes media with an embedded build of **Sharp**. Commands are plugins grouped by category, so extending the bot means adding a file, not rewriting the core.
-
-Every reply carries the Salever identity: silver `#C0C0C0`, an animated 🅇, and calm response templates.
-
-| | |
-|:--|:--|
-| **Runtime** | Node.js 18+ |
-| **Framework** | MeowSab — `ws-main/` |
-| **Media** | Sharp — `sharp-tmx-main/`, `system/image-processor.js` |
-| **AI** | Gemini 2.5 Flash · multiple personalities |
-| **Commands** | `plugins/` |
-| **Configuration** | `system/config.js` |
-| **Start** | `npm start` |
-
----
-
-## Why Salever
-
-Salever treats a WhatsApp bot as a product, not a folder of scripts.
-
-- **Identity first.** One visual language across replies and terminal: silver palette, animated 🅇, and a startup banner.
-- **Own the core.** MeowSab and Sharp live inside the repository, tuned for Salever, rather than sitting behind a thin wrapper.
-- **Built to be edited.** What you'll want to change lives in `plugins/` and `system/`.
-
----
-
-## Features
-
-| System | Capabilities | Location |
-|:--|:--|:--|
-| **Core** | Bot runtime · plugin-based command system · permission control · central configuration | `index.js` · `system/` |
-| **Interaction** | Group management · nativeFlow buttons, catalogs, locations · command menus | `plugins/admins/` · `plugins/group/` · `plugins/owner/` · `plugins/menu.js` |
-| **AI** | Gemini 2.5 Flash conversations · multiple AI personalities | `plugins/ai/` |
-| **Media** | Stickers · animated logo · 23 logo themes · image processing · video notes | `system/image-processor.js` · `plugins/logo/` · `plugins/tools/` |
-| **Games** | Chess · Tic-Tac-Toe · Piano — interactive HTML experiences | `plugins/game/` |
-| **Utilities** | Weather · YouTube download · nasheed · tools | `plugins/` |
-| **Identity** | Silver theme · animated 🅇 · calm response templates · terminal banner | `system/config.js` · `system/utils.js` |
-
----
-
-## Architecture
-
-```text
-WhatsApp
-   │
-   ▼
-index.js ················· entry point
-   │
-   ▼
-Runtime ·················· MeowSab (ws-main/)
-   │
-   ├── system/ ··········· config · utils · image-processor · control
-   │      └── sharp-tmx-main/ ··· embedded Sharp
-   │
-   └── plugins/ ·········· commands, grouped by category
-          ├── game · ai · islamic · tools
-          ├── admins · group · bank · info · auto
-          └── logo · voices · owner · menus
-```
-
-### Project structure
-
-```text
-sovereignx-core/
-├── index.js                 # Entry point
-├── package.json
-├── system/
-│   ├── config.js            # Settings · banner · response templates
-│   ├── utils.js             # Shared helpers (stickers, X assets, calm responses)
-│   ├── image-processor.js   # Internal image processing (Sharp)
-│   └── control.js           # Group events · permission control
-├── plugins/
-│   ├── game/                # Chess · XO · Piano · Download
-│   ├── ai/                  # Gemini chat · AI personalities
-│   ├── islamic/             # Nasheed
-│   ├── tools/               # Weather · video notes · image tools
-│   ├── admins/  group/      # Group management
-│   ├── bank/  info/  auto/  # Economy · info · automatic commands
-│   ├── logo/  voices/  owner/
-│   └── menu.js  menu2.js    # Command menus
-├── ws-main/                 # MeowSab framework
-└── sharp-tmx-main/          # Embedded Sharp
-```
-
-| Path | Purpose |
-|:--|:--|
-| `index.js` | Main entry point |
-| `system/` | Core utilities and runtime services |
-| `plugins/` | Bot commands |
-| `ws-main/` | Internal framework (MeowSab) |
-| `sharp-tmx-main/` | Embedded image processing (Sharp) |
-
-### Embedded core
-
-```text
-Salever
-│
-├── Bot Runtime ········ index.js · system/
-├── MeowSab ············ ws-main/
-├── Media Processing ··· sharp-tmx-main/ · system/image-processor.js
-├── Command Plugins ···· plugins/
-└── AI · Games · Tools · plugins/ai · plugins/game · plugins/tools
-```
-
-The goal is to keep the essential parts of the system inside the project instead of presenting Salever as a wrapper around outside libraries. MeowSab and Sharp are embedded and customized for Salever. Other dependencies declared in `package.json` are still installed by `npm install`.
-
----
-
-## Command Center
-
-Commands are shown with the `.` prefix. Arabic aliases work alongside the English names.
-
-### 🎮 Games
-
+Directory Structure
+| Directory/File | Purpose |
+|---|---|
+| index.js | Primary application entry point and socket initializer. |
+| system/ | Core logic: configurations, image processors, and permission controllers. |
+| plugins/ | Modular command registry categorized by functionality (Games, AI, Tools). |
+| ws-main/ | The embedded, customized MeowSab internal framework. |
+| sharp-tmx-main/ | Localized Sharp library for sovereign media manipulation. |
+⟡ COMMAND MATRIX
+Commands are compartmentalized within the plugins/ directory. Below is a subset of the operational capabilities.
+🤖 AI & Logic
 | Command | Alias | Description |
-|:--|:--|:--|
-| `.chess` | `.شطرنج` | Interactive chess — legal-move rules, check and checkmate, promotion, undo |
-| `.xo` | `.اكس او` | Tic-Tac-Toe against the computer or another player, with a score counter |
-| `.piano` | `.بيانو` | Interactive piano on Web Audio — 8 white keys, 5 black keys |
-
-> Games are delivered as an HTML file. Open it in a browser and play.
-
-### 🤖 AI
-
+|---|---|---|
+| .ai | .ذكاء | Initialize Gemini 2.5 Flash interaction. |
+| Various | Various | Invoke localized AI personalities. |
+🎮 Interactive Games (HTML Payload)
 | Command | Alias | Description |
-|:--|:--|:--|
-| `.ai` | `.ذكاء` | Conversation powered by Gemini 2.5 Flash |
-
-Additional AI personalities live in `plugins/ai/`.
-
-### 🛠 Tools
-
+|---|---|---|
+| .chess | .شطرنج | Full interactive chess with validation, checkmate, and promotion. |
+| .xo | .اكس او | Tic-Tac-Toe engine (Player vs AI / Player vs Player) with scoreboard. |
+| .piano | .بيانو | Web Audio synthesizer (8 white keys, 5 black keys). |
+🛠 Tools & Media
 | Command | Alias | Description |
-|:--|:--|:--|
-| `.weather` | `.الطقس` | Weather for any city — no API key required |
-| `.download` | `.تنزيل` | Download video or audio from YouTube |
-
-### 🎵 Media
-
+|---|---|---|
+| .download | .تنزيل | Fetch and extract Video/Audio payloads from YouTube. |
+| .videonote | .vn | Process and transmit standard video as a circular WhatsApp Note. |
+| .weather | .الطقس | Fetch meteorological data without requiring an API key. |
+| .nashid | .نشيد | Query or generate random Islamic audio (MP3). |
+🛡️ Administration & Economy
 | Command | Alias | Description |
-|:--|:--|:--|
-| `.nashid` | `.نشيد` | Random or searched nasheed, downloadable as MP3 |
-| `.videonote` | `.vn` | Send a video as a circular video note |
+|---|---|---|
+| .tesbtn | None | Evaluate nativeFlow button capabilities (Owner authorization required). |
+| System | System | Restart, Halt, Join/Leave routing, Privacy configuration. |
+| Group | Group | Kick, Ban, Warn, Mute, Anti-link enforcement, Mass Mention. |
+| Economy | Economy | Digital banking: Profiles, Leveling, Gifting, and Stealing mechanics. |
+(Refer to plugins/menu.js for the complete operational matrix).
+⟡ QUICK START
+Ensure Node.js v18.x or higher is installed before proceeding.
+▫️ Linux / Windows / macOS
+# 1. Clone the repository
+git clone https://github.com/sovereignempirex-ux/sovereignx-core.git
 
-Also included: sticker → image and image → video conversion.
+# 2. Navigate to the directory
+cd sovereignx-core
 
-### 👑 Owner · 👥 Groups · 🪙 Economy · 🎨 Logos
+# 3. Install required node modules
+npm install
 
-| Area | Capabilities | Location |
-|:--|:--|:--|
-| 👑 **Owner** | Restart · stop · join · leave · privacy · nativeFlow buttons · `.tesbtn` (button test, owner only) | `plugins/owner/` |
-| 👥 **Groups** | Kick · ban · warnings · mute · links · mention · anti-link | `plugins/admins/` · `plugins/group/` |
-| 🪙 **Economy** | Profile · gift · steal · level | `plugins/bank/` |
-| 🎨 **Logos** | 23 themes plus an animated 🅇 logo | `plugins/logo/` |
+# 4. Initialize the runtime
+npm start
 
-Exact command names for these areas are listed in the in-bot menu.
-
----
-
-## Installation
-
-**Requirements:** Node.js 18+ · Git
-
-### Android · Termux
-
-```bash
+▫️ Android (Termux)
 termux-setup-storage
 pkg update -y && pkg upgrade -y
 pkg install git nodejs -y
-git clone https://github.com/sovereignempirex-ux/sovereignx-core
+git clone https://github.com/sovereignempirex-ux/sovereignx-core.git
 cd sovereignx-core
 npm install
 npm start
-```
 
-### Windows · Linux · macOS
+Upon execution, the 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 terminal banner will initiate, followed by a request for your WhatsApp Pairing Code.
+⟡ CONFIGURATION
+System behavior is governed centrally. Review the following files to adjust bot parameters:
+ * system/config.js
+   Modify owner credentials, bot identity strings, global prefixes, and banner settings.
+ * system/utils.js
+   Adjust output aesthetics, the 🅇 signature assets, and the getCalmResponse() string arrays.
+ * system/control.js
+   Manage group event listeners and hierarchical permissions.
+⟡ DEVELOPER WORKFLOW
+Adding functionality to 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 requires zero modification to the core runtime.
+Standard Plugin Integration:
+ * Navigate to the relevant category in plugins/ (e.g., plugins/tools/).
+ * Create a new .js file mapping to the command structure.
+ * Save and execute .restart via WhatsApp or restart the Node process.
+ * The system automatically registers the new module into memory.
+⟡ ROADMAP
+ * [x] Internalize MeowSab framework.
+ * [x] Integrate zero-dependency Sharp processor.
+ * [x] Implement Gemini 2.5 Flash architecture.
+ * [x] Deploy HTML-based interactive game payloads.
+ * [ ] Future: Expansion of the nativeFlow button interfaces.
+ * [ ] Future: Advanced telemetry and crash-recovery loops.
+⟡ SECURITY PROTOCOLS
+ * Session Data: Never expose or commit the generated session files.
+ * Environment Variables: Utilize .env approaches for any external API keys you may add in the future.
+ * Module Auditing: Review code before dropping external .js files into the plugins/ directory to prevent unauthorized execution.
+⟡ SUPPORT & DEPLOYMENT
+Hosting Infrastructure
+𝑺𝒂𝒍𝒆𝒗𝒆𝒓 is optimized for deployment on Cavirox Hosting.
 
-Install Node.js 18+ and Git, then:
-
-```bash
-git clone https://github.com/sovereignempirex-ux/sovereignx-core
-cd sovereignx-core
-npm install
-npm start
-```
-
-### First launch
-
-1. The silver **Salever** banner appears in the terminal.
-2. Salever asks for a **pairing code**.
-3. Enter the code in WhatsApp (Linked devices) to link the session.
-
----
-
-## Configuration
-
-| File | Holds |
-|:--|:--|
-| `system/config.js` | Bot settings · terminal banner · response templates |
-| `system/utils.js` | Shared helpers — stickers, X assets, calm responses via `getCalmResponse()` |
-| `system/control.js` | Group events · permission control |
-
-Review `system/config.js` for the current configuration before your first launch.
-
-- **AI:** the Gemini plugin lives in `plugins/ai/` — check it for how the key is supplied.
-- **Weather:** works without an API key.
-- **Secrets:** keep keys and session data out of version control. See [Security](#security).
-
----
-
-## Deployment
-
-Salever starts with `npm start`, so any environment that meets the requirements can host it.
-
-| Target | Notes |
-|:--|:--|
-| **Android · Termux** | Follow the [Termux steps](#android--termux) |
-| **Desktop / server** | Follow the [Windows · Linux · macOS steps](#windows--linux--macos) |
-| **Managed hosting** | Cavirox — [cavirox.com](https://cavirox.com) |
-
+Explore Cavirox
+Maintainers & Resources
+ * Lead Architect: svcp
+ * Repository: GitHub/sovereignempirex-ux
+ * Official Broadcasts: 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 Network (ID: 120363412381946365@newsletter)
 <div align="center">
-
-<img src="https://b.top4top.io/p_3725xw4y21.jpg" alt="Cavirox" width="160" />
-
-</div>
-
----
-
-## Development
-
-```text
-Edit  →  Test  →  Run  →  Debug  →  Commit
-```
-
-### Adding a command
-
-```text
-plugins/
-└── <category>/
-    └── <command>.js
-```
-
-1. Pick the category folder that fits (`game`, `ai`, `tools`, `owner`, …).
-2. Follow the structure of an existing plugin in that folder — for example `plugins/owner/tesbtn.js`.
-3. Start with `npm start` and test the command in WhatsApp.
-4. If it should appear in the menus, check `plugins/menu.js` and `plugins/menu2.js`.
-
-### Contributing
-
-```text
-Fork  →  Branch  →  Implement  →  Test  →  Pull Request
-```
-
-Keep to the existing folder structure, test before you open a PR, and never commit secrets.
-
----
-
-## Roadmap
-
-**Current**
-
-- [x] Modular plugin-based command system
-- [x] Gemini 2.5 Flash integration with multiple AI personalities
-- [x] Interactive HTML games — chess, XO, piano
-- [x] Internal image processing and animated logos
-- [x] Group management and nativeFlow buttons
-- [x] Embedded MeowSab framework and Sharp
-
-**Future ideas** — not committed features
-
-- [ ] Plugin authoring guide
-- [ ] Full configuration reference
-- [ ] Complete command reference for every plugin
-- [ ] Further architecture improvements
-
----
-
-## Security
-
-- Treat your pairing session and credentials as private. Never share or commit them.
-- Never upload API keys. Use environment variables where appropriate.
-- Review any third-party plugin before adding it to `plugins/`.
-- Salever makes no security guarantees — review the code before exposing it to others.
-
----
-
-## Support
-
-| | |
-|:--|:--|
-| **Channel** | [Salever on WhatsApp](https://whatsapp.com/channel/0029Vb8glFqJkK7EdMYrao0K) · ID `120363412381946365@newsletter` |
-| **Repository** | [sovereignempirex-ux/sovereignx-core](https://github.com/sovereignempirex-ux/sovereignx-core) |
-| **Owner / Developer** | svcp |
-| **Hosting** | [Cavirox](https://cavirox.com) |
-
----
-
-## License
-
-Released under the **MIT License**. See [LICENSE](LICENSE).
-
-## Credits
-
-| | |
-|:--|:--|
-| **Creator** | svcp |
-| **Framework** | MeowSab, embedded and customized for Salever |
-| **Media** | Sharp, embedded |
-| **AI** | Gemini |
-| **Hosting** | Cavirox |
-
----
-
-<div align="center">
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**🅇 𝑺𝒂𝒍𝒆𝒗𝒆𝒓**
-
-*Silver by identity. Sovereign by design.*<br />
-*Built for experimentation. Designed for extension.*
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-<sub>Made by svcp · © 2026 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 · MIT License</sub>
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🅇 𝑺𝒂𝒍𝒆𝒗𝒆𝒓
+Built for experimentation. Designed for sovereignty.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+© 2026 𝑺𝒂𝒍𝒆𝒗𝒆𝒓 — Released under the MIT License.
+🪙 ✨ 🌿
 </div>
